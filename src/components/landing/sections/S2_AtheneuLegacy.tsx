@@ -10,9 +10,9 @@ export function S2_AtheneuLegacy() {
       <div className="container-content py-6 md:py-7">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-6 text-center md:text-left">
           <p className="text-sm sm:text-base leading-relaxed">
-            <span className="font-extrabold tracking-tight">Editora Atheneu desde 1929.</span>{' '}
+            <span className="font-extrabold tracking-tight">Editora Atheneu, desde 1928,</span>{' '}
             <span className="text-mateus-bg/75">
-              Casa editorial de Wasserman, Guyton e Robbins na medicina brasileira.
+              publicando conhecimento que forma gerações na saúde.
             </span>
           </p>
 

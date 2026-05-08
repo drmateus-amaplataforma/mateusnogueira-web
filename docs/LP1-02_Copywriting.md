@@ -43,7 +43,7 @@
 Faixa horizontal navy sobre marfim. Layout responsivo (stack mobile, row desktop).
 
 **Esquerda:**
-> **Editora Atheneu desde 1929.** Casa editorial de Wasserman, Guyton e Robbins na medicina brasileira.
+> **Editora Atheneu, desde 1928,** publicando conhecimento que forma gerações na saúde.
 
 **Direita (auto-transita conforme `daysUntil` da `book.preSaleEndDate`):**
 - **Pré-venda ativa:** `Pré-venda · até 24 de maio · X dias restantes` (X em dourado)

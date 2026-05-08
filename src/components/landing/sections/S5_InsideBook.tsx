@@ -77,7 +77,7 @@ export function S5_InsideBook() {
           className="lg:col-span-5 space-y-8"
         >
           <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-            <Stat label="Editora" value="Atheneu" sub="desde 1929" />
+            <Stat label="Editora" value="Atheneu" sub="desde 1928" />
             <Stat label="Edição" value="1ª" sub="2026" />
             <Stat label="Páginas" value={'~' + book.estimatedPages} sub="impressas" />
             <Stat label="Figuras" value={book.totalFigures + '+'} sub="científicas" />

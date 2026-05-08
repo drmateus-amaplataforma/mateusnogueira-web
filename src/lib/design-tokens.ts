@@ -43,7 +43,7 @@ export const book = {
   promise:
     'Da estimativa à medição: o método para dominar Calorimetria Indireta e Teste Cardiopulmonar como terapia de precisão na prática clínica.',
   publisher: 'Editora Atheneu',
-  publisherSince: 1929,
+  publisherSince: 1928,
   publicationYear: 2026,
   priceFull: 219,
   installments: { count: 5, value: 43.8 },
