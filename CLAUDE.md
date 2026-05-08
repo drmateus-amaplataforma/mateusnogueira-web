@@ -52,9 +52,13 @@ Fontes TTF em:
 
 ---
 
-## 4. Referência de qualidade — landing AMA Plataforma
+## 4. Referências de qualidade obrigatórias
 
-A landing de `amaplataforma.com.br` é o **padrão de qualidade** deste projeto. Antes de escrever qualquer componente, ler:
+Estas duas landing pages definem o padrão visual e de conversão. **Estudar ambas antes de escrever qualquer componente.**
+
+### 4a. AMA Plataforma — padrão de design system
+URL: https://amaplataforma.com.br
+Código fonte local:
 
 ```
 C:\Users\mateu\Home Office\04_AMA-PLATAFORMA\ama-plataforma-web\src\app\page.tsx
@@ -62,6 +66,11 @@ C:\Users\mateu\Home Office\04_AMA-PLATAFORMA\ama-plataforma-web\src\components\l
 
 Localização deste projeto: C:\Users\mateu\Home Office\06_MOTOR-MARKETING\09_SITES_WEB\mateusnogueira-web
 ```
+
+### 4b. VAE Hands-On — padrão de landing page de produto/curso
+URL: https://vidaativaensino.com.br/cursos/hands-on
+Código fonte local: `C:\Users\mateu\Home Office\06_MOTOR-MARKETING\09_SITES_WEB\vae-handson-landing\` (se existir)
+**O que replicar desta landing:** estrutura de seções de conversão, hierarquia de CTAs, social proof, urgência, depoimentos, FAQ, hero com proposta de valor clara.
 
 ### Estrutura de seções da AMA (referência de ordem e padrão):
 1. Header (sticky)
