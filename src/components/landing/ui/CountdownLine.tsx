@@ -7,7 +7,7 @@ export function CountdownLine() {
   if (days === 0) {
     return (
       <span className="text-mateus-bg">
-        Disponível na Editora Atheneu · capa dura · 2026
+        Disponível na Editora Atheneu · 2026
       </span>
     );
   }

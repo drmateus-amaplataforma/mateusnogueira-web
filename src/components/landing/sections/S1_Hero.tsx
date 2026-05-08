@@ -40,7 +40,7 @@ export function S1_Hero() {
             <div className="flex flex-col sm:flex-row sm:items-center gap-6 pt-4">
               <div className="space-y-1">
                 <p className="text-xs uppercase tracking-eyebrow text-mateus-muted">
-                  Capa dura · Editora Atheneu · 2026
+                  Editora Atheneu · 2026
                 </p>
                 <p className="font-extrabold text-mateus-primary text-2xl sm:text-3xl leading-none">
                   5× de <span className="text-mateus-gold">R$ 43,80</span>

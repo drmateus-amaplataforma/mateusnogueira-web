@@ -21,7 +21,7 @@ export function S3_Sumario() {
         <Stat number={book.totalChapters} label="capítulos" />
         <Stat number={book.totalFigures + '+'} label="figuras científicas" />
         <Stat number={book.totalReferences + '+'} label="referências por pares" />
-        <Stat number={'~' + book.estimatedPages} label="páginas (capa dura)" />
+        <Stat number={'~' + book.estimatedPages} label="páginas" />
       </div>
 
       <ul className="space-y-3 max-w-4xl">

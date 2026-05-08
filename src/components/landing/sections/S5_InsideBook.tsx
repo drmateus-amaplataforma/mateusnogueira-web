@@ -19,7 +19,7 @@ export function S5_InsideBook() {
       <SectionHeader
         eyebrow="O livro por dentro"
         heading="Veja antes de comprar."
-        subheading="Edição revisada por pares · referências atualizadas até 2026 · capa dura · Editora Atheneu. A amostra abaixo é oficial da Atheneu."
+        subheading="Edição revisada por pares · referências atualizadas até 2026 · Editora Atheneu. A amostra abaixo é oficial da Atheneu."
       />
 
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -78,8 +78,8 @@ export function S5_InsideBook() {
         >
           <div className="grid grid-cols-2 gap-x-6 gap-y-4">
             <Stat label="Editora" value="Atheneu" sub="desde 1929" />
-            <Stat label="Capa" value="Dura" sub="impressão 2026" />
-            <Stat label="Páginas" value={'~' + book.estimatedPages} sub="capa dura" />
+            <Stat label="Edição" value="1ª" sub="2026" />
+            <Stat label="Páginas" value={'~' + book.estimatedPages} sub="impressas" />
             <Stat label="Figuras" value={book.totalFigures + '+'} sub="científicas" />
           </div>
 

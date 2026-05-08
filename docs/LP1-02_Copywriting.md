@@ -26,7 +26,7 @@
 `Da estimativa à medição: o método para dominar Calorimetria Indireta e Teste Cardiopulmonar como terapia de precisão na prática clínica.`
 
 **Bloco preço:**
-- "Capa dura · Editora Atheneu · 2026" (uppercase tracking)
+- "Editora Atheneu · 2026" (uppercase tracking)
 - `5× de R$ 43,80 sem juros` (R$ 43,80 em dourado)
 - `R$ 219 à vista · pré-venda até 24/05`
 
@@ -47,7 +47,7 @@ Faixa horizontal navy sobre marfim. Layout responsivo (stack mobile, row desktop
 
 **Direita (auto-transita conforme `daysUntil` da `book.preSaleEndDate`):**
 - **Pré-venda ativa:** `Pré-venda · até 24 de maio · X dias restantes` (X em dourado)
-- **Pós 24/05:** `Disponível na Editora Atheneu · capa dura · 2026`
+- **Pós 24/05:** `Disponível na Editora Atheneu · 2026`
 
 ## S4 · Page → Practice (protagonista — 3 splits)
 
@@ -86,7 +86,7 @@ Faixa horizontal navy sobre marfim. Layout responsivo (stack mobile, row desktop
 - `11` capítulos
 - `235+` figuras científicas
 - `100+` referências por pares
-- `~350` páginas (capa dura)
+- `~350` páginas
 
 **Accordion 11 capítulos** com subtítulo + 4-5 takeaways cada (curados do manuscrito real). Numeração em dourado (`01`, `02`, ..., `11`). Primeira aberta por padrão.
 
@@ -94,7 +94,7 @@ Faixa horizontal navy sobre marfim. Layout responsivo (stack mobile, row desktop
 
 **Eyebrow:** `O livro por dentro`
 **Headline:** `Veja antes de comprar.`
-**Subhead:** `Edição revisada por pares · referências atualizadas até 2026 · capa dura · Editora Atheneu. A amostra abaixo é oficial da Atheneu.`
+**Subhead:** `Edição revisada por pares · referências atualizadas até 2026 · Editora Atheneu. A amostra abaixo é oficial da Atheneu.`
 
 **Layout duas colunas:**
 - **Esquerda (60%):** Embed do PDF amostra Atheneu (`amostra-livro.pdf`) em viewer com header "Amostra oficial · Editora Atheneu" + link "Abrir em nova aba ↗"
@@ -142,7 +142,7 @@ Faixa horizontal navy sobre marfim. Layout responsivo (stack mobile, row desktop
 ### FAQ (6 perguntas, accordion):
 1. **Quando recebo o livro?** A partir de 24 de maio de 2026, durante a janela de pré-venda. Após o lançamento, segue disponível para envio direto pela Editora Atheneu.
 2. **Qual a forma de pagamento?** Diretamente no site da Atheneu: cartão de crédito (até 5× sem juros), Pix ou boleto. Durante a pré-venda, R$ 219 (5× de R$ 43,80 sem juros).
-3. **Existe versão digital (e-book)?** A pré-venda atual é da edição impressa em capa dura. Versões digitais futuras seguem cronograma editorial da Atheneu.
+3. **Existe versão digital (e-book)?** A pré-venda atual é da edição impressa. Versões digitais futuras seguem cronograma editorial da Atheneu.
 4. **O livro substitui a Plataforma AMA?** Não — eles são complementares. O livro descreve o método MEV 3.0 e o SVDL. A Plataforma AMA aplica esse método em produção, com IA validando limiares em tempo real e gerando laudo.
 5. **Para quem ainda não realiza ergoespirometria, o livro vale?** Vale. A primeira metade trata de fundamentos fisiológicos e calorimetria indireta — aplicáveis em qualquer prática clínica.
 6. **Posso comprar para minha equipe ou clínica?** Sim. A Atheneu atende pedidos institucionais. Entre em contato pelo formulário ao lado para indicação direta.

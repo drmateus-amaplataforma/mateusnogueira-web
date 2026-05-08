@@ -19,7 +19,7 @@ const FAQ = [
   },
   {
     q: 'Existe versão digital (e-book)?',
-    a: 'A pré-venda atual é da edição impressa em capa dura. Versões digitais futuras seguem cronograma editorial da Atheneu.',
+    a: 'A pré-venda atual é da edição impressa. Versões digitais futuras seguem cronograma editorial da Atheneu.',
   },
   {
     q: 'O livro substitui a Plataforma AMA?',

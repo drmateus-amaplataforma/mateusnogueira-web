@@ -26,7 +26,7 @@ export function S2_AtheneuLegacy() {
               </>
             ) : (
               <span className="text-mateus-bg/85">
-                Disponível na Editora Atheneu · capa dura · {book.publicationYear}
+                Disponível na Editora Atheneu · {book.publicationYear}
               </span>
             )}
           </div>
