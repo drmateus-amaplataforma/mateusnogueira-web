@@ -21,7 +21,14 @@ export const metadata: Metadata = {
       'Da estimativa à medição: o método MEV 3.0 para Calorimetria Indireta e Teste Cardiopulmonar. Editora Atheneu, 2026.',
     url: '/livros/avaliacao-metabolica',
     type: 'book',
-    images: ['/livros/avaliacao/capa-livro.png'],
+    locale: 'pt_BR',
+    siteName: 'Dr. Mateus Antunes Nogueira',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Avaliação Metabólica Avançada na Saúde e no Desempenho',
+    description:
+      'Da estimativa à medição: o método MEV 3.0 para Calorimetria Indireta e Teste Cardiopulmonar. Editora Atheneu, 2026.',
   },
 };
 
