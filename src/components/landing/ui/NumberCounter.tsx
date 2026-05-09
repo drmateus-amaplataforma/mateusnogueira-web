@@ -13,11 +13,19 @@ import { useEffect, useRef } from 'react';
 type NumberCounterProps = {
   to: number;
   duration?: number;
-  format?: (n: number) => string;
+  formatType?: 'comma' | 'crm';
   className?: string;
   ariaLabel?: string;
   suffix?: string;
   prefix?: string;
+};
+
+const FORMATTERS: Record<'comma' | 'crm', (n: number) => string> = {
+  comma: (n) => Math.round(n).toLocaleString('pt-BR'),
+  crm: (n) => {
+    const padded = String(Math.round(n)).padStart(5, '0');
+    return `${padded.slice(0, 2)}.${padded.slice(2)}`;
+  },
 };
 
 /**
@@ -25,16 +33,20 @@ type NumberCounterProps = {
  * prefers-reduced-motion: renderiza valor final estático sem
  * animação. Usa Framer Motion useInView + animate (motion value)
  * para otimizar — sem re-renders por frame.
+ *
+ * formatType é discriminator string (não função) para permitir uso a
+ * partir de Server Components — funções não atravessam a barreira RSC.
  */
 export function NumberCounter({
   to,
   duration = 1.6,
-  format = (n) => Math.round(n).toLocaleString('pt-BR'),
+  formatType = 'comma',
   className,
   ariaLabel,
   suffix = '',
   prefix = '',
 }: NumberCounterProps) {
+  const format = FORMATTERS[formatType];
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: '0px 0px -10% 0px' });
   const reducedMotion = useReducedMotion();

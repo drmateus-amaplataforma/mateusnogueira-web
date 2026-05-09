@@ -328,7 +328,7 @@ type StatItem = {
   value: number;
   suffix?: string;
   label: string;
-  customFormat?: (n: number) => string;
+  formatType?: 'comma' | 'crm';
   todo?: boolean;
 };
 
@@ -346,10 +346,7 @@ const STATS: readonly StatItem[] = [
   {
     value: 97070,
     label: 'CRM-SP · Doutor pela USP',
-    customFormat: (n: number) => {
-      const padded = String(Math.round(n)).padStart(5, '0');
-      return `${padded.slice(0, 2)}.${padded.slice(2)}`;
-    },
+    formatType: 'crm',
   },
   {
     value: 15,
@@ -381,7 +378,7 @@ function SocialProofSection() {
               <NumberCounter
                 to={stat.value}
                 suffix={stat.suffix ?? ''}
-                format={stat.customFormat}
+                formatType={stat.formatType}
               />
             </p>
             <p className="text-xs sm:text-sm text-mateus-text/85 leading-relaxed">
