@@ -8,6 +8,7 @@ import { Section, SectionHeader } from '@/components/landing/ui/Section';
 import { Reveal } from '@/components/landing/ui/Reveal';
 import { DotGrid } from '@/components/landing/ui/DotGrid';
 import { AnimatedFilete } from '@/components/landing/ui/AnimatedFilete';
+import { GlowCard } from '@/components/landing/ui/GlowCard';
 import { author, werutsky, nelson } from '@/lib/design-tokens';
 
 export const metadata: Metadata = {
@@ -300,12 +301,136 @@ function TimelineSection() {
 }
 
 // =====================================================================
-// 4. Endossos — placeholder até commit 2 (Endossos + CTA dual)
+// 4. Endossos — Werutsky (LP1) + Nelson (LP2)
 // =====================================================================
+// Reusa estrutura GlowCard das LPs e os dados canonicos de
+// design-tokens.ts (werutsky{}, nelson{}). TODO Doutor: enviar fotos
+// dos endossadores para enriquecer os cards (atualmente sao iniciais
+// em badge gold).
+
+const ENDOSSOS = [
+  {
+    person: werutsky,
+    contexto:
+      'Endosso ao livro Avaliação Metabólica Avançada (Atheneu, 2026).',
+  },
+  {
+    person: nelson,
+    contexto:
+      'Endosso ao livro Nova Medicina do Estilo de Vida (Atheneu, 2026).',
+  },
+] as const;
 
 function EndossosSection() {
-  return null;
+  return (
+    <Section id="endossos" alt>
+      <SectionHeader
+        eyebrow="Endossos"
+        heading="Vozes que sustentam o método."
+        subheading="Especialistas reconhecidos no campo da nutrologia, medicina do esporte e geriatria endossaram os dois livros publicados pela Atheneu."
+        align="center"
+      />
+
+      <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {ENDOSSOS.map((e, i) => {
+          const initials = e.person.name
+            .replace('Prof. ', '')
+            .replace('Dr. ', '')
+            .split(' ')
+            .filter(Boolean)
+            .slice(0, 2)
+            .map((p) => p[0])
+            .join('');
+
+          return (
+            <Reveal key={e.person.name} delay={i * 0.12} className="h-full">
+              <GlowCard variant="gold" className="group h-full">
+                <div className="flex flex-col h-full">
+                  <div className="flex items-start gap-4 mb-5">
+                    <div
+                      className="relative flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-mateus-gold/30 to-mateus-accent/15 border border-mateus-gold/30 flex items-center justify-center"
+                      aria-hidden
+                    >
+                      <span className="font-serif font-bold text-mateus-primary text-lg">
+                        {initials}
+                      </span>
+                      {/* TODO Doutor: enviar foto do endossador para substituir badge de iniciais */}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-serif font-bold text-lg text-mateus-primary leading-tight">
+                        {e.person.name}
+                      </h3>
+                      <p className="text-xs text-mateus-muted mt-1.5 leading-relaxed">
+                        {e.person.credentials}
+                      </p>
+                    </div>
+                  </div>
+                  <blockquote className="flex-1 text-sm lg:text-base text-mateus-text/85 leading-relaxed italic font-serif border-l-2 border-mateus-gold/30 pl-4">
+                    &ldquo;{e.person.quote}&rdquo;
+                  </blockquote>
+                  <p className="text-[11px] uppercase tracking-eyebrow text-mateus-gold/80 font-semibold mt-5">
+                    {e.contexto}
+                  </p>
+                </div>
+              </GlowCard>
+            </Reveal>
+          );
+        })}
+      </div>
+    </Section>
+  );
 }
+
+// =====================================================================
+// 5. CTA dual — Solicitar palestra + Falar com a equipe
+// =====================================================================
+// Rota /contato ainda nao existe (vem em 6.3c). Por ora, link
+// secundario aponta para mailto: como fallback.
+// TODO Doutor: confirmar email institucional (atualmente
+// contato@mateusnogueira.com.br — placeholder).
+
 function CtaDualSection() {
-  return null;
+  return (
+    <section className="relative overflow-hidden bg-mateus-primary py-20 lg:py-28">
+      <DotGrid className="opacity-15" />
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-50"
+        style={{
+          background:
+            'radial-gradient(circle at 20% 30%, rgba(176, 133, 56, 0.18), transparent 60%), radial-gradient(circle at 85% 85%, rgba(176, 133, 56, 0.10), transparent 65%)',
+        }}
+      />
+      <div className="container-content relative">
+        <Reveal className="max-w-3xl mx-auto text-center space-y-6">
+          <p className="eyebrow text-mateus-gold">Próximo passo</p>
+          <h2 className="font-serif font-bold text-3xl sm:text-4xl lg:text-5xl text-mateus-white leading-tight">
+            Convide Dr. Mateus para o seu próximo evento.
+          </h2>
+          <div className="flex justify-center">
+            <AnimatedFilete width={80} align="center" />
+          </div>
+          <p className="text-lg text-mateus-white/80 leading-relaxed max-w-2xl mx-auto">
+            Palestras, workshops e mentorias para empresas, congressos
+            médicos e mídia. Para outras conversas, fale com a equipe.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+            <CTAButton href="/palestras#booking" variant="gold" size="lg">
+              Solicitar palestra →
+            </CTAButton>
+            <Link
+              href="mailto:contato@mateusnogueira.com.br"
+              className="inline-flex items-center justify-center gap-2 rounded-lg text-base font-semibold py-4 px-8 bg-transparent text-mateus-white border border-mateus-white/30 hover:border-mateus-white/70 hover:bg-mateus-white/[0.04] transition-all duration-200"
+            >
+              Falar com a equipe
+            </Link>
+          </div>
+          <p className="text-xs text-mateus-white/50 italic pt-2">
+            TODO Doutor: confirmar email institucional. Página /contato
+            chega em 6.3c.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
 }
