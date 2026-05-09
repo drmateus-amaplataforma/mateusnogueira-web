@@ -638,10 +638,28 @@ function BookingSection() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className="lg:col-span-7 lg:sticky lg:top-24">
+        <Reveal delay={0.1} className="lg:col-span-7 lg:sticky lg:top-24 space-y-3">
           <div className="rounded-2xl bg-mateus-white border border-mateus-accent/15 shadow-card-soft p-6 sm:p-8">
             <LeadForm origem="palestra" />
           </div>
+
+          {/*
+           * WhatsApp canônico de palestras: (11) 99891-1235
+           * (canonizado em memory/contatos_canonicos.md). Bloco
+           * compacto após o LeadForm para Doutor que prefere falar
+           * direto. Texto pequeno, não compete com o CTA do form.
+           */}
+          <p className="text-xs text-mateus-muted text-center px-2">
+            Prefere falar direto? WhatsApp{' '}
+            <a
+              href="https://wa.me/5511998911235"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-mateus-primary hover:text-mateus-gold transition-colors underline-offset-4 hover:underline"
+            >
+              (11) 99891-1235
+            </a>
+          </p>
         </Reveal>
       </div>
     </Section>
@@ -678,6 +696,10 @@ const FAQ_ITENS = [
   {
     q: 'Há cláusula de exclusividade?',
     a: 'Para eventos corporativos, é possível negociar exclusividade temporária (não-concorrência regional ou setorial) em contrato à parte, mediante fee adicional. Para congressos médicos, em geral não se aplica.',
+  },
+  {
+    q: 'Posso falar direto sem formulário?',
+    a: 'Sim — WhatsApp direto: (11) 99891-1235 (link: https://wa.me/5511998911235). Para registro estruturado da demanda (especialmente em pautas com prazo, fee e contrato a definir), prefira o formulário acima — a triagem é mais rápida e o histórico fica organizado para a equipe.',
   },
 ] as const;
 
