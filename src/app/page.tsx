@@ -9,6 +9,7 @@ import { Reveal } from '@/components/landing/ui/Reveal';
 import { DotGrid } from '@/components/landing/ui/DotGrid';
 import { AnimatedFilete } from '@/components/landing/ui/AnimatedFilete';
 import { ScrollIndicator } from '@/components/landing/ui/ScrollIndicator';
+import { NumberCounter } from '@/components/landing/ui/NumberCounter';
 
 export const metadata: Metadata = {
   title: {
@@ -320,14 +321,128 @@ function EcossistemaSection() {
 }
 
 // =====================================================================
-// 4. Social proof — placeholder até as outras seções (commit 2)
-// 5. CTA final — placeholder até as outras seções (commit 2)
+// 4. Social proof — 4 stats com number-up animation (useInView)
 // =====================================================================
+// TODO Doutor: confirmar 1.000+ profissionais e 15+ anos de pratica.
+
+type StatItem = {
+  value: number;
+  suffix?: string;
+  label: string;
+  customFormat?: (n: number) => string;
+  todo?: boolean;
+};
+
+const STATS: readonly StatItem[] = [
+  {
+    value: 1000,
+    suffix: '+',
+    label: 'profissionais formados pela Vida Ativa Ensino',
+    todo: true,
+  },
+  {
+    value: 2,
+    label: 'livros pela Editora Atheneu (2026)',
+  },
+  {
+    value: 97070,
+    label: 'CRM-SP · Doutor pela USP',
+    customFormat: (n: number) => {
+      const padded = String(Math.round(n)).padStart(5, '0');
+      return `${padded.slice(0, 2)}.${padded.slice(2)}`;
+    },
+  },
+  {
+    value: 15,
+    suffix: '+',
+    label: 'anos de prática clínica integrada',
+    todo: true,
+  },
+];
 
 function SocialProofSection() {
-  return null;
+  return (
+    <Section id="numeros" alt>
+      <Reveal as="header" className="text-center max-w-narrow mx-auto mb-12 lg:mb-16">
+        <p className="eyebrow text-mateus-gold mb-3">Em números</p>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl text-mateus-primary">
+          A escala de quem aplica o método.
+        </h2>
+        <AnimatedFilete align="center" width={64} className="mt-4" />
+      </Reveal>
+
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        {STATS.map((stat, i) => (
+          <Reveal
+            key={stat.label}
+            delay={i * 0.1}
+            className="text-center px-2"
+          >
+            <p className="font-serif font-extrabold text-4xl sm:text-5xl lg:text-6xl text-mateus-primary leading-none mb-3">
+              <NumberCounter
+                to={stat.value}
+                suffix={stat.suffix ?? ''}
+                format={stat.customFormat}
+              />
+            </p>
+            <p className="text-xs sm:text-sm text-mateus-text/85 leading-relaxed">
+              {stat.label}
+              {stat.todo && (
+                <span className="block text-[10px] uppercase tracking-eyebrow text-mateus-gold/70 italic mt-1">
+                  TODO Doutor: confirmar
+                </span>
+              )}
+            </p>
+          </Reveal>
+        ))}
+      </div>
+    </Section>
+  );
 }
 
+// =====================================================================
+// 5. CTA final — bg navy + radial gold
+// =====================================================================
+// TODO Doutor: revisar headline ("Vamos transformar conhecimento em palco?").
+
 function CtaFinalSection() {
-  return null;
+  return (
+    <section className="relative overflow-hidden bg-mateus-primary py-20 lg:py-28">
+      <DotGrid className="opacity-15" />
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-50"
+        style={{
+          background:
+            'radial-gradient(circle at 80% 30%, rgba(176, 133, 56, 0.18), transparent 60%), radial-gradient(circle at 15% 85%, rgba(176, 133, 56, 0.10), transparent 65%)',
+        }}
+      />
+      <div className="container-content relative">
+        <Reveal className="max-w-3xl mx-auto text-center space-y-6">
+          <p className="eyebrow text-mateus-gold">Próximo evento</p>
+          <h2 className="font-serif font-bold text-3xl sm:text-4xl lg:text-5xl text-mateus-white leading-tight">
+            Vamos transformar conhecimento em palco?
+          </h2>
+          <div className="flex justify-center">
+            <AnimatedFilete width={80} align="center" />
+          </div>
+          <p className="text-lg text-mateus-white/80 leading-relaxed max-w-2xl mx-auto">
+            Solicite proposta detalhada de palestra ou workshop. Retorno em
+            48h úteis com agenda, formatos e valores.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+            <CTAButton href="/palestras#booking" variant="gold" size="lg">
+              Solicitar palestra →
+            </CTAButton>
+            <Link
+              href="/sobre"
+              className="inline-flex items-center justify-center gap-2 rounded-lg text-base font-semibold py-4 px-8 bg-transparent text-mateus-white border border-mateus-white/30 hover:border-mateus-white/70 hover:bg-mateus-white/[0.04] transition-all duration-200"
+            >
+              Conheça o autor
+            </Link>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
 }
