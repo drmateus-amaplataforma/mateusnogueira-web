@@ -13,15 +13,15 @@ export function MevS5_Sumario() {
     <Section id="conteudo" alt>
       <SectionHeader
         eyebrow="O livro por dentro"
-        heading="O que você vai descobrir."
-        subheading="8 capítulos em linguagem que você entende — com casos clínicos, dados de pesquisas e a ciência por trás de cada decisão. Mais um apêndice prático: a sua primeira semana de Vida Ativa em 7 dias."
+        heading="Os 8 capítulos que você vai atravessar."
+        subheading="Uma conversa em linguagem que você entende, com casos reais do consultório, a ciência que mudou nas últimas décadas e — no fim — um roteiro prático para sua primeira semana de Vida Ativa."
       />
 
       <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 mb-16 max-w-3xl">
         <Stat number={bookMev.totalChapters} label="capítulos + apêndice" />
         <Stat number={'6'} label="pilares do estilo de vida" />
         <Stat number={bookMev.totalReferences + '+'} label="referências científicas" />
-        <Stat number={'~' + bookMev.estimatedPages} label="páginas (impressas)" />
+        <Stat number={bookMev.estimatedPages} label="páginas" />
       </div>
 
       <ul className="space-y-3 max-w-4xl">

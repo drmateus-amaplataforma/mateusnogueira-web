@@ -218,6 +218,9 @@ export const chapters = [
 
 // =====================================================
 // LP2 — Nova Medicina do Estilo de Vida
+// Reescrita 09/05/2026 (sessão pós-bug) com base na leitura
+// integral do manuscrito (147 páginas) e síntese em
+// docs/livro-nova-mev/SINTESE_PARA_LP2.md
 // =====================================================
 
 const utmPrefixMev =
@@ -225,9 +228,9 @@ const utmPrefixMev =
 
 export const bookMev = {
   title: 'Nova Medicina do Estilo de Vida',
-  subtitle: 'Prevenção, Tratamento e Longevidade.',
+  subtitle: 'Prevenção, Tratamento e Longevidade',
   promise:
-    'Os 6 pilares que decidem como você vai viver os próximos 30, 50 ou 70 anos. Sem dieta da moda, sem promessas vazias, sem culpa — só a ciência que mudou tudo.',
+    'Não é mais um livro sobre dieta. Não é sobre força de vontade. É o convite para entender como seu corpo realmente funciona — e por que tudo o que te disseram sobre calorias, treino exaustivo e disciplina passa muito longe do que a ciência hoje já sabe.',
   publisher: 'Editora Atheneu',
   publisherSince: 1928,
   publicationYear: 2026,
@@ -241,9 +244,9 @@ export const bookMev = {
     `https://www.atheneu.com.br/nova-medicina-do-estilo-de-vida${utmPrefixMev}&utm_content=${encodeURIComponent(position)}`,
   slug: 'nova-medicina',
   totalChapters: 8,
-  totalFigures: 6,
+  totalFigures: 10,
   totalReferences: 68,
-  estimatedPages: 120,
+  estimatedPages: 147,
 } as const;
 
 export const nelson = {
@@ -257,205 +260,268 @@ export const chaptersMev = [
   {
     n: 1,
     title: 'Qual é o estado metabólico natural do ser humano?',
-    subtitle: 'Herança evolutiva vs. mundo moderno',
+    subtitle: 'Por que seu corpo se sente travado num mundo de abundância',
     takeaways: [
-      'Atividade física como calibragem, não como queima de calorias',
-      'Contradição evolutiva: instintos ancestrais em ambiente de abundância',
-      'Por que dietas restritivas falham',
-      'Origem dopaminérgica da compulsão alimentar',
+      'Por que seus ancestrais andavam 10 km por dia — e o que isso ainda muda no seu corpo hoje',
+      'A "calibragem do motor": entender por que o movimento não é castigo, é regulagem',
+      'A contradição que o seu cérebro vive: ele te empurra para o sofá e o chocolate',
+      'Por que dietas restritivas falham — não é falta de força de vontade',
     ],
   },
   {
     n: 2,
     title: 'Quebrando paradigmas',
-    subtitle: 'Metabolismo, emagrecimento e bem-estar',
+    subtitle: 'A conversa franca: o que ninguém te contou sobre metabolismo',
     takeaways: [
-      'Quantidade vs. qualidade · Metabolismo vs. longevidade',
-      'Estudo de San-Millán sobre flexibilidade metabólica',
-      'Motor flexível vs. motor travado',
-      'Estudo das Enfermeiras: até 14 anos a mais de vida',
-      'Sedentarismo é fator de risco comparável ao tabagismo',
+      'A história do colega cirurgião com bife e alface — por que comer pouco não funciona',
+      'Por que contar caloria é a métrica errada (e o que de fato importa no prato)',
+      'A pesquisa que mostrou: 150 minutos por semana = até 14 anos a mais de vida',
+      'Por que ficar parado pesa quase tanto na saúde quanto fumar',
     ],
   },
   {
     n: 3,
     title: 'O homem moderno, os alimentos e a medicina ocidental',
-    subtitle: 'Hipercalóricos, parâmetros laboratoriais e fórmulas mágicas',
+    subtitle: 'Como 70 anos de comida industrial mudaram a sua biologia',
     takeaways: [
-      '5 estágios evolutivos do metabolismo humano',
-      'Por que 70 anos não bastam para adaptação biológica',
-      'Crítica aos atalhos farmacológicos (Mounjaro, Ozempic, sibutramina)',
-      'Reframe da culpa: "não é só sua"',
+      'A pirâmide alimentar que orientou o mundo inteiro estava errada — entenda o porquê',
+      'A diferença que muda tudo: in natura, processado e ultraprocessado',
+      'Por que até "bisnaga light" pode ser inimigo do seu metabolismo',
+      'O que a indústria não te conta sobre conservantes, corantes e gordura trans',
     ],
   },
   {
     n: 4,
     title: 'Expectativa e qualidade de vida',
-    subtitle: 'A fome, a insulina, o estresse, o sono — sem pânico',
+    subtitle: 'Os exames de rotina mentem? E o que pedir para descobrir a verdade',
     takeaways: [
-      'Insulina como hormônio central das doenças crônicas',
-      'Eixo cortisol-sono-gordura visceral',
-      'Por que o pânico bloqueia a transformação',
+      'Por que o "tá tudo normal" do seu exame pode estar te enganando',
+      'O que é a glicemia de quem realmente vive saudável (e por que a referência atual é frouxa)',
+      'O sono, o estresse e a insulina: o triângulo que decide tudo',
+      'Como sair da angústia da balança e olhar para os marcadores que importam',
     ],
   },
   {
     n: 5,
     title: 'Medicina 3.0',
-    subtitle: 'Um novo olhar para a saúde',
+    subtitle: 'Quando "tomar remédio" deixa de ser a única resposta',
     takeaways: [
-      'Reativo vs. proativo: limites da Medicina 2.0',
-      'Caso da paciente com câncer de pâncreas que prolongou sobrevida',
-      'Por que protocolos genéricos falham',
-      'A virada cognitiva como pré-requisito',
+      'A diferença entre apagar incêndio (Medicina 2.0) e cuidar da casa (Medicina 3.0)',
+      'Por que a fragmentação dos especialistas frequentemente não cura nada',
+      'O que muda quando seu médico passa a olhar a causa, não só o sintoma',
+      'A virada de chave: você como protagonista, o médico como guia',
     ],
   },
   {
     n: 6,
-    title: 'Os 6 pilares da medicina do estilo de vida',
-    subtitle: 'Atividade física · Alimentação · Sono · Estresse · Conexões · Substâncias',
+    title: 'Os 6 pilares da Medicina do Estilo de Vida',
+    subtitle: 'Movimento · Alimentação · Sono · Estresse · Conexões · Sem tóxicos',
     takeaways: [
-      'Hierarquia dos pilares — não é arbitrária',
-      '80/20: zonas de treinamento e princípio polarizado',
-      'Caso Carlos: VO₂ de 28 → 38 ml/kg/min em 6 meses',
-      'Adesão a múltiplos hábitos reduz mortalidade em 63%',
+      'O movimento certo: caminhar num ritmo onde você ainda consegue conversar',
+      'O prato simples: metade vegetais, um quarto proteína de qualidade — comer devagar até 80% satisfeito',
+      'O sono como remédio gratuito (e por que a tela antes de dormir destrói tudo)',
+      'O estresse: 5 minutos de pausa que tiram seu corpo do modo "luta ou fuga"',
+      'As conexões sociais como fator de longevidade — comprovado pelo estudo mais longo do mundo',
     ],
   },
   {
     n: 7,
     title: 'Blue Zones e lições de longevidade',
-    subtitle: 'Ikaria · Okinawa · Sardenha · Nicoya · Loma Linda',
+    subtitle: 'O que os povos mais longevos do mundo fazem diferente',
     takeaways: [
-      'Tradição empírica vs. ciência aplicada',
-      'Tsimané: menores níveis de aterosclerose já registrados em humanos',
-      'Caso da paciente com Doença de Crohn + adenocarcinoma',
-      'Os Hadza e os Tsimané como espelho evolutivo',
+      'As 5 Blue Zones do mundo (e por que nenhuma é no Brasil) — Sardenha, Okinawa, Loma Linda, Nicoya, Ikaria',
+      'Os Tsimané, na Bolívia: as artérias mais saudáveis já encontradas em qualquer ser humano',
+      'O caso clínico da paciente com Doença de Crohn que escapou de uma segunda cirurgia',
+      'O que esses povos comem, fazem e cultivam — e o que dá para trazer para a sua semana',
     ],
   },
   {
     n: 8,
-    title: 'Saúde em movimento',
-    subtitle: 'A prática · O cotidiano · Caso real Paciente L.P.',
+    title: 'Saúde em movimento — comece agora',
+    subtitle: 'A história pessoal do autor + o roteiro prático para seus primeiros 7 dias',
     takeaways: [
-      'Relato pessoal: trombo no tronco celíaco e a virada profissional',
-      'Paciente L.P.: VO₂ 35,3 → 43,0 ml/kg/min em 8 meses',
-      '−10,3 kg de gordura · +1,1 kg de músculo',
-      'Apêndice: Roteiro de Início Rápido em 7 dias',
+      'A noite em que o autor quase pulou da janela de tanta dor (e o que descobriu na UTI)',
+      'A paciente L.P. (58 anos): em 8 meses, o "motor" dela ficou 21% mais potente — ela ganhou músculo perdendo peso',
+      'O Apêndice prático: o roteiro dia a dia para começar essa semana, sem assustar a sua rotina',
+      'A frase que fecha o livro: "Resta, então, dar o primeiro passo. Comece a sua Vida Ativa!"',
     ],
-  },
-] as const;
-
-export const passagesMev = [
-  {
-    theme: 'Atividade física · Pilar 1',
-    chapter: 6,
-    page: 95,
-    text: 'A atividade física é mais do que ganho e perda de energia — ela modela todo o metabolismo humano. O que se busca é uma sintonia fina: desenvolver a complexa capacidade metabólica do organismo por meio de um equilíbrio estratégico entre os estímulos da atividade leve e os da atividade intensa. É justamente essa harmonia que favorece a biogênese mitocondrial — literalmente, o corpo passa a produzir mais mitocôndrias.',
-    amaScreenshot: '/livros/nova-medicina/ama/zonas-treino.png',
-    amaCaption: 'Plataforma AMA · prescrição de zonas de treinamento por VO₂ e limiares',
-  },
-  {
-    theme: 'Conexões sociais · Pilar 5',
-    chapter: 6,
-    page: 130,
-    text: 'O Harvard Study of Adult Development, acompanhando vidas desde 1938, revelou de forma consistente que o fator mais importante para uma vida longa, feliz e saudável não é a riqueza, a fama ou o sucesso profissional — mas sim a qualidade das nossas conexões significativas.',
-    amaScreenshot: '/livros/nova-medicina/ama/protocolo-mev.png',
-    amaCaption: 'Plataforma AMA · plano de cuidado integrado dos 6 pilares',
-  },
-  {
-    theme: 'Longevidade · Blue Zones',
-    chapter: 7,
-    page: 155,
-    text: 'Um estudo marcante revelou que os Tsimané, na Bolívia, possuem os menores níveis de aterosclerose coronária já registrados em qualquer população humana. A baixa expectativa média não vem de envelhecimento ruim ou doença crônica — mas de mortalidade infantil. Quem sobrevive aos perigos iniciais frequentemente atinge a velhice com uma saúde invejável.',
-    amaScreenshot: '/livros/nova-medicina/ama/nutricao-precisao.png',
-    amaCaption: 'Plataforma AMA · monitoramento de marcadores metabólicos',
   },
 ] as const;
 
 export const audienceMev = [
   {
-    label: 'Quem quer chegar aos 80, 90, 100 com qualidade',
+    label: 'Você que já tentou de tudo',
     description:
-      'Para quem entendeu que viver mais não basta — quer viver com energia, autonomia e clareza até o fim.',
+      'Você cansou de dietas restritivas, do treino exaustivo e dos efeitos bumerangue. Aqui você vai entender por que nada disso funciona — e o que funciona de verdade.',
   },
   {
-    label: 'Quem cansou de receitas mágicas',
+    label: 'Você que quer chegar inteiro aos 80, 90, 100',
     description:
-      'Para quem já tentou dietas da moda, treinos exaustivos e medicação sem critério — e quer um caminho com ciência de verdade.',
+      'Não é sobre viver mais. É sobre chegar lá com energia, lucidez e autonomia. O livro mostra o que decide isso muito antes de você sentir.',
   },
   {
-    label: 'Quem cuida de quem ama',
+    label: 'Você que cuida dos seus pais (ou de você mesmo)',
     description:
-      'O livro que você dá para os pais, filhos, amigos. Linguagem clara, evidência sólida, sem culpabilizar ninguém.',
+      'Esse é o livro que você lê e empresta. Linguagem clara, sem culpa e sem assustar. Útil para conversas difíceis em família.',
   },
   {
-    label: 'Quem quer entender o que realmente importa',
+    label: 'Você que quer entender por dentro',
     description:
-      'Estilo de vida vs. genética. Nutrição vs. dieta. Exercício vs. queimar calorias. As coisas certas, na ordem certa.',
+      'Por que o sono importa tanto. Por que sentar mata. Por que o açúcar não é o vilão único. As respostas que ninguém te deu — em linguagem que você compreende.',
   },
   {
-    label: 'Profissionais de saúde — como humanos',
+    label: 'Você que se sente perdido com tanta informação contraditória',
     description:
-      'Médicos, nutrólogos, geriatras, profissionais de saúde que querem aplicar em si antes de prescrever para outros.',
+      'Influenciador, médico, vizinho — cada um diz uma coisa. Aqui você tem um cirurgião e doutor pela USP separando o que tem ciência do que é moda passageira.',
   },
   {
-    label: 'Profissionais para indicar pacientes',
+    label: 'Profissionais de saúde — como humanos primeiro',
     description:
-      'O livro que você entrega para quem chega ao consultório com mil dúvidas. Responde as 50 maiores — em linguagem clara.',
+      'Médicos, nutricionistas, fisioterapeutas, educadores físicos. Para ler como gente que também cuida da própria saúde — e para indicar aos pacientes que perguntam demais.',
   },
 ] as const;
 
-export const casosMev = [
-  {
-    name: 'Paciente L.P.',
-    duration: '8 meses',
-    before: 'VO₂máx 35,3 ml/kg/min · sobrepeso · cansaço crônico',
-    after: 'VO₂máx 43,0 ml/kg/min · −10,3 kg de gordura · +1,1 kg de músculo',
-    insight: 'Emagrecer ganhando massa magra. O oposto do que o Ozempic entrega.',
-  },
-  {
-    name: 'Carlos',
-    duration: '6 meses',
-    before: 'VO₂máx 28 ml/kg/min · pré-diabetes · pressão limítrofe',
-    after: 'VO₂máx 38 ml/kg/min · glicemia normalizada · pressão controlada',
-    insight: 'O que muda quando o tratamento ataca a causa, não o sintoma.',
-  },
-  {
-    name: 'Paciente com Doença de Crohn + Adenocarcinoma',
-    duration: '3 meses',
-    before: 'Inflamação crônica refratária a múltiplas terapias',
-    after: 'Marcadores inflamatórios sistêmicos regredidos',
-    insight: 'O caso que mudou o que entendo por medicina.',
-  },
-] as const;
+// Anedota curta para abrir o conceito (S4) — texto extraído do Cap 2
+// "Certa vez, um colega do centro cirúrgico..." (linha ~354 do manuscrito)
+export const anedotaMev = {
+  eyebrow: 'Uma cena que se repete',
+  hook:
+    'Almoço no centro cirúrgico. Um colega — cirurgião plástico, jovem, marombeiro — chega com um prato de alface e uma montanha de bife.',
+  conflict:
+    'Está desesperado contando calorias. Quer barriga trincada. Acredita que está fazendo o certo.',
+  paragraph:
+    'Olhei para o prato e disse a ele: "Desse jeito você não vai conseguir nunca." Não pela quantidade — pela escolha. A gordura saturada do bife em excesso, sem o equilíbrio de um carboidrato integral, sem as sementes que ajudariam o índice glicêmico. Cortar carboidrato e empilhar proteína cheia de gordura ruim pode até secar no curto prazo. Mas não constrói saúde.',
+  insight:
+    'Esse colega é a maioria dos seus amigos. É talvez você. Não é falta de disciplina — é receita errada. O livro inteiro é uma conversa para destravar isso.',
+} as const;
 
-export const dadosViraisMev = [
+// Caso clínico em narrativa de 2 fases — Cap 7, paciente com Doença de Crohn + adenocarcinoma
+// Texto sintetizado dos trechos literais do livro (pp 137-139)
+export const casoMev = {
+  eyebrow: 'Um caso real do consultório',
+  heading: 'Quando a cirurgia não basta',
+  fase1: {
+    label: 'Primeiro encontro',
+    text:
+      'Uma paciente jovem chegou ao meu consultório por indicação. Tinha Doença de Crohn — uma inflamação crônica do intestino — e o quadro tinha evoluído para um câncer já em nível cirúrgico. O diagnóstico era alarmante: um adenocarcinoma, tipo de câncer frequente em quem convive há anos com inflamações intestinais. Operamos. A cirurgia foi radical: precisei retirar quase todo o intestino grosso para garantir que nada do tumor ficasse para trás. Tentei preservar uma pequena porção do reto para evitar uma colostomia definitiva — uma decisão arriscada, porque essa região continuaria vulnerável à mesma inflamação que originou tudo.',
+  },
+  ponte: 'Depois da cirurgia, fui claro: precisava mudar tudo no estilo de vida. A força dos antigos padrões — somada à ilusão de que a cirurgia tinha resolvido tudo — falou mais alto. A transformação não aconteceu.',
+  fase2: {
+    label: 'Dois anos depois',
+    text:
+      'Recebi a ligação que eu temia: a inflamação no reto havia voltado, e pior, já evoluía novamente para câncer. A única proposta da medicina convencional era a amputação definitiva do reto. Foi o momento de uma conversa franca. Fui categórico: só haveria uma alternativa viável se ela assumisse total responsabilidade pelas mudanças que eu propunha. Não era mais uma recomendação. Era a última chance.',
+  },
+  resolucao:
+    'Desta vez, ela agarrou a oportunidade. Implementamos com rigor uma alimentação anti-inflamatória, e introduzi exercícios físicos na medida certa — aeróbicos e de força, na dose adequada para o corpo dela. Três meses depois, os exames trouxeram o que parecia improvável: a inflamação tinha regredido completamente. Meu colega gastroenterologista, profissional que respeito muito, ficou incrédulo. Para ele, era difícil aceitar que mudança de hábitos pudesse fazer aquilo.',
+  closing:
+    'A história dessa paciente ensina que a chave para uma vida mais longa e saudável não está em fórmulas mágicas. Está nas escolhas diárias — pequenos gestos que, somados, transformam destinos.',
+  question: 'E você? Está pronto para essa conversa?',
+} as const;
+
+// Narrativa literal do trombo — Cap 8
+// Texto extraído dos trechos literais (pp 140-141)
+export const autorMev = {
+  eyebrow: 'Autor · A noite em que tudo mudou',
+  heading: 'O cirurgião que precisou virar paciente',
+  identifier: 'Dr. Mateus Antunes Nogueira · CRM-SP 97.070',
+  paragraph1:
+    'Eu vivia como muitos que vão pegar este livro. Disciplinado. Contava calorias. Treinava acima da média. Achava que estava fazendo tudo certo. Tinha alguma dificuldade com colesterol, mas atribuía à genética e seguia em frente. Era o que a medicina tradicional ensinava a fazer.',
+  paragraph2:
+    'Certa noite, acordei com uma dor abdominal intensa. Achei que ia passar. Não passou. No dia seguinte, a dor nas costas piorou independente da posição — eu sabia que não era muscular. Ao final da terça-feira, a dor era tão insuportável que cheguei a pensar em saltar pela janela, de tanto desespero. Eu estava sozinho com minha filha pequena. Minha esposa estava de plantão no hospital. Liguei para um colega me levar ao pronto-socorro.',
+  paragraph3:
+    'Os exames revelaram uma condição rara: um trombo no tronco celíaco, a artéria que leva sangue ao fígado e ao estômago. O médico vascular explicou: eu tinha sofrido uma dissecção arterial, situação grave em que a artéria quase se rompe. Passei quatro dias na UTI sob observação para garantir que não houvesse rompimento total.',
+  pullQuote:
+    'Foi um alerta. Eu achava que fazia tudo certo. Descobri que tinha muito a aprender. Já era médico. Já era cirurgião. Foi a partir desse episódio que comecei a estudar nutrição e medicina do esporte com profundidade — para entender como o corpo realmente funciona, na dose certa, no momento certo.',
+  paragraph4:
+    'Depois do susto, fundei a Vida Ativa Ensino e Pesquisa para levar essa abordagem a outros profissionais de saúde. Sigo sendo cirurgião, especialidade que só foi possível graças à medicina tradicional. Mas atendo, opero, ensino e oriento de outra maneira agora. Esta é a medicina que escrevi para você — a mesma que reconstruiu o que precisava ser reconstruído em mim.',
+  creds: [
+    { label: 'CRM-SP', value: '97.070' },
+    { label: 'Doutor pela', value: 'USP' },
+    { label: 'Especialidades', value: 'Cirurgia · Esporte · Nutrologia' },
+    { label: 'Atende em SP', value: 'desde 2010' },
+  ],
+} as const;
+
+// Roteiro prático de 7 dias — Apêndice (pp 146-147)
+// Teaser do que vem dentro do livro como entrega concreta
+export const roteiroMev = {
+  eyebrow: 'O que você leva já na primeira semana',
+  heading: 'O Roteiro de Início Rápido — sua primeira Vida Ativa em 7 dias',
+  intro:
+    'No final do livro tem um apêndice prático: um roteiro dia a dia para você sair da paralisia do "por onde eu começo?". Não é dieta rígida nem treino de atleta. É o convite para começar a enviar os sinais certos para suas células, num ritmo que cabe na sua semana.',
+  dias: [
+    {
+      n: 1,
+      titulo: 'O ambiente',
+      acao: 'Vá até a sua despensa. Tire de vista o que você sabe que sabota. Coloque frutas e água onde você as veja primeiro.',
+    },
+    {
+      n: 2,
+      titulo: 'O movimento',
+      acao: 'Caminhe 20 a 30 minutos num ritmo onde o corpo aquece, mas você ainda consegue conversar. Esse é o "remédio" das suas mitocôndrias.',
+    },
+    {
+      n: 3,
+      titulo: 'O prato',
+      acao: 'Metade do prato com vegetais. Um quarto com proteína de qualidade. Coma devagar até estar 80% satisfeito.',
+    },
+    {
+      n: 4,
+      titulo: 'O sono',
+      acao: 'Marque um alarme — não para acordar, para ir dormir. Telas desligadas uma hora antes. Quarto escuro e fresco.',
+    },
+    {
+      n: 5,
+      titulo: 'A pausa',
+      acao: '5 minutos sentado em silêncio, respirando consciente. Isso tira seu corpo do modo "luta ou fuga" — e libera a queima de gordura.',
+    },
+    {
+      n: 6,
+      titulo: 'A conexão',
+      acao: 'Repita a caminhada do dia 2 — agora com alguém que te faz bem. O vínculo social positivo potencializa todos os outros pilares.',
+    },
+    {
+      n: 7,
+      titulo: 'A reflexão',
+      acao: 'Pese-se sem julgamento. Tire uma foto. Escreva como se sentiu nessa semana. Planeje a próxima.',
+    },
+  ],
+  closing:
+    '"A informação sem ação é apenas arquivo morto. A transformação acontece no movimento." — Dr. Mateus, no fechamento do livro.',
+} as const;
+
+export const faqMev = [
   {
-    big: '63%',
-    label: 'redução de mortalidade',
-    detail:
-      'A adesão a múltiplos hábitos saudáveis reduz a mortalidade por todas as causas em até 63%.',
-    source: 'Loef & Walach, 2012',
+    q: 'Eu não sou da área da saúde — vou conseguir entender?',
+    a: 'Vai. O livro foi escrito para você, leigo curioso sobre o próprio corpo. Quando aparece um termo técnico, ele vem traduzido no mesmo parágrafo: "mitocôndria (a usina de energia das suas células)", "VO₂ máximo (a potência do seu motor)". Sem fórmula química, sem jargão de hospital. Histórias de pacientes reais, gráficos claros, exemplos do dia a dia.',
   },
   {
-    big: '14 anos',
-    label: 'a mais de vida',
-    detail:
-      'A diferença entre quem segue 5 hábitos básicos de saúde e quem não segue, em mulheres adultas.',
-    source: 'Nurses\' Health Study, Harvard',
+    q: 'Não vai me culpar por estar acima do peso ou cansado, vai?',
+    a: 'O autor é categórico nisso. Como ele escreve no livro: "se você enfrenta uma compulsão ou descontrole alimentar, saiba que você não é fraco ou preguiçoso. Você está lutando contra instintos profundamente enraizados". O livro é o oposto da culpa. É o convite para entender o que está acontecendo no seu corpo — e fazer paz com ele.',
   },
   {
-    big: 'Tsimané',
-    label: 'aterosclerose mínima',
-    detail:
-      'Povo da Bolívia: os menores níveis de aterosclerose coronária já registrados em qualquer população humana.',
-    source: 'Kaplan et al., The Lancet, 2017',
+    q: 'É mais um livro de "vida saudável"?',
+    a: 'Não. A maioria dos livros do gênero é achismo travestido de ciência ou ciência rasa travestida de motivação. Aqui é um cirurgião e doutor pela USP fazendo o oposto: ciência rigorosa em linguagem clara, com casos clínicos do consultório dele e a história pessoal de quando ele mesmo precisou virar paciente.',
   },
   {
-    big: '≈ tabaco',
-    label: 'sedentarismo',
-    detail:
-      'O risco de morte por sedentarismo é comparável ao do tabagismo em estudos de coorte.',
-    source: 'Moore et al., NCI, 2012',
+    q: 'Tenho médico de confiança. O livro vai entrar em conflito com ele?',
+    a: 'Não — esse não é o objetivo. O livro te dá o vocabulário para conversar de igual para igual com qualquer profissional de saúde. Você vai fazer perguntas melhores, entender melhor as recomendações e participar das decisões. Junto com seu médico, não contra. O autor é explícito: "a medicina tradicional nos salvou de poucas e boas e continua fazendo milagres".',
+  },
+  {
+    q: 'Promete emagrecer?',
+    a: 'O autor diz logo na introdução: "este não é um livro sobre emagrecer". É um livro sobre estilo de vida. A perda de peso aparece como consequência natural, sem dieta restritiva, sem fome, sem treino exaustivo. Mas a promessa real é outra: viver mais, com mais energia e mais autonomia.',
+  },
+  {
+    q: 'Quando recebo o livro?',
+    a: 'A partir de 24 de maio de 2026. A Editora Atheneu envia direto do estoque conforme o cronograma de pré-venda. Após o lançamento, segue disponível para envio direto.',
+  },
+  {
+    q: 'Qual a forma de pagamento?',
+    a: 'Diretamente no site da Atheneu: cartão de crédito (até 3× sem juros), Pix ou boleto. Durante a pré-venda, R$ 139 (3× de R$ 46,33 sem juros).',
+  },
+  {
+    q: 'Posso comprar para presentear?',
+    a: 'É uma das melhores razões. Pais, filhos, irmãos, amigos num momento de virada — o livro tem a clareza necessária para ser presente útil. Linguagem acolhedora, evidência sólida, zero culpa. Muitos leitores acabam comprando o segundo exemplar para dar a alguém.',
   },
 ] as const;
 

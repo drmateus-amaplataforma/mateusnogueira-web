@@ -3,23 +3,24 @@ import { Header } from '@/components/landing/ui/Header';
 import { Footer } from '@/components/landing/ui/Footer';
 import { MevS1_Hero } from '@/components/landing/sections/mev/S1_Hero';
 import { MevS2_AtheneuLegacy } from '@/components/landing/sections/mev/S2_AtheneuLegacy';
-import { MevS4_DadosVirais } from '@/components/landing/sections/mev/S4_DadosVirais';
-import { MevS4b_Casos } from '@/components/landing/sections/mev/S4b_Casos';
+import { MevS3_ParaQuem } from '@/components/landing/sections/mev/S3_ParaQuem';
+import { MevS4_Anedota } from '@/components/landing/sections/mev/S4_Anedota';
+import { MevS4b_CasoPaciente } from '@/components/landing/sections/mev/S4b_CasoPaciente';
 import { MevS5_Sumario } from '@/components/landing/sections/mev/S5_Sumario';
 import { MevS6_Autor } from '@/components/landing/sections/mev/S6_Autor';
 import { MevS7_Nelson } from '@/components/landing/sections/mev/S7_Nelson';
-import { MevS3_ParaQuem } from '@/components/landing/sections/mev/S3_ParaQuem';
+import { MevS7b_RoteiroSemana } from '@/components/landing/sections/mev/S7b_RoteiroSemana';
 import { MevS8_FaqCta } from '@/components/landing/sections/mev/S8_FaqCta';
 
 export const metadata: Metadata = {
-  title: 'Nova Medicina do Estilo de Vida',
+  title: 'Nova Medicina do Estilo de Vida — Dr. Mateus Antunes Nogueira',
   description:
-    'Os 6 pilares que decidem como você vai viver os próximos 30, 50 ou 70 anos. Sem dieta da moda, sem promessas vazias — só a ciência que mudou tudo. Editora Atheneu, 2026.',
+    'Não é mais um livro sobre dieta. É o convite para entender como seu corpo realmente funciona — e por que tudo o que te disseram sobre calorias e disciplina passa longe do que a ciência hoje sabe. Editora Atheneu, 2026.',
   alternates: { canonical: '/livros/nova-medicina' },
   openGraph: {
-    title: 'Nova Medicina do Estilo de Vida',
+    title: 'Nova Medicina do Estilo de Vida — Prevenção, Tratamento e Longevidade',
     description:
-      'Os 6 pilares para viver mais — e melhor. A ciência que mudou tudo, em linguagem que você entende. Editora Atheneu, 2026.',
+      'O livro de saúde que faltava para o público leigo. Linguagem clara, ciência rigorosa, sem culpa e sem promessas mágicas. Editora Atheneu, 2026.',
     url: '/livros/nova-medicina',
     type: 'book',
     locale: 'pt_BR',
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nova Medicina do Estilo de Vida',
     description:
-      'Os 6 pilares para viver mais — e melhor. A ciência que mudou tudo, em linguagem que você entende.',
+      'O convite para entender o próprio corpo. Sem dieta, sem culpa, sem jargão. Atheneu, 2026.',
   },
 };
 
@@ -40,12 +41,13 @@ export default function NovaMedicinaPage() {
       <main>
         <MevS1_Hero />
         <MevS2_AtheneuLegacy />
-        <MevS4_DadosVirais />
-        <MevS4b_Casos />
+        <MevS3_ParaQuem />
+        <MevS4_Anedota />
         <MevS5_Sumario />
+        <MevS4b_CasoPaciente />
         <MevS6_Autor />
         <MevS7_Nelson />
-        <MevS3_ParaQuem />
+        <MevS7b_RoteiroSemana />
         <MevS8_FaqCta />
       </main>
       <Footer />

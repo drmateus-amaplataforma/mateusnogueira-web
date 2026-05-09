@@ -30,14 +30,22 @@ export function MevS1_Hero() {
             </p>
 
             <h1 className="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl text-mateus-primary leading-[1.05] tracking-tight">
-              {bookMev.title}.
+              {bookMev.title}
             </h1>
+
+            <p className="font-serif text-xl sm:text-2xl text-mateus-primary/85 leading-snug italic">
+              {bookMev.subtitle}
+            </p>
 
             <p className="text-lg sm:text-xl text-mateus-muted leading-relaxed max-w-2xl">
               {bookMev.promise}
             </p>
 
-            <div className="flex flex-col sm:flex-row sm:items-center gap-6 pt-4">
+            <p className="font-serif italic text-mateus-primary/80 text-base sm:text-lg leading-relaxed max-w-2xl border-l-2 border-mateus-lilas/40 pl-5">
+              "Permita-me ser seu guia nesta jornada."
+            </p>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6 pt-2">
               <div className="space-y-1">
                 <p className="text-xs uppercase tracking-eyebrow text-mateus-muted">
                   Editora Atheneu · 2026

@@ -38,3 +38,14 @@ next-env.d.ts
 # Pasta antiga de logos AMA, não relacionada ao projeto
 Logo/
 
+# Backups locais de assets (não vão para o repo público)
+public/**/*-backup*
+public/**/*backup*
+
+# Manuscritos completos dos livros (copyright Atheneu — NÃO commitar)
+docs/livro-nova-mev/manuscrito-*.txt
+docs/livro-nova-mev/manuscrito-*.md
+docs/**/manuscrito-*
+
+# Claude Code config local
+.claude/

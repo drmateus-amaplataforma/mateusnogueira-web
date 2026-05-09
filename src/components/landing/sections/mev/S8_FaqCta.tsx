@@ -5,39 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Section } from '@/components/landing/ui/Section';
 import { LeadForm } from '@/components/landing/ui/LeadForm';
 import { CTAButton } from '@/components/landing/ui/CTAButton';
-import { bookMev } from '@/lib/design-tokens';
+import { bookMev, faqMev } from '@/lib/design-tokens';
 import { cn } from '@/lib/utils';
-
-const FAQ = [
-  {
-    q: 'Eu não sou da área da saúde — vou conseguir entender?',
-    a: 'Sim. O livro foi escrito em linguagem acessível, com profundidade científica. Não tem fórmulas químicas indecifráveis nem jargão hospitalar. Tem ciência de verdade traduzida — com casos clínicos reais, gráficos claros e o método na ordem certa para você aplicar.',
-  },
-  {
-    q: 'É só mais um livro de "vida saudável"?',
-    a: 'Não. A maioria dos livros do gênero é achismo travestido de ciência ou ciência rasa travestida de motivação. Este é um cirurgião e doutor pela USP fazendo o oposto: ciência rigorosa em linguagem clara, sem promessas mágicas e sem culpabilizar o leitor.',
-  },
-  {
-    q: 'Quando recebo o livro?',
-    a: 'A partir de 24 de maio de 2026. A Editora Atheneu envia direto do estoque conforme o cronograma de pré-venda. Após o lançamento, segue disponível para envio direto.',
-  },
-  {
-    q: 'Qual a forma de pagamento?',
-    a: 'Diretamente no site da Atheneu: cartão de crédito (até 3× sem juros), Pix ou boleto. Durante a pré-venda, R$ 139 (3× de R$ 46,33 sem juros).',
-  },
-  {
-    q: 'Existe versão digital (e-book)?',
-    a: 'A pré-venda atual é da edição impressa. Versões digitais futuras seguem cronograma editorial da Atheneu.',
-  },
-  {
-    q: 'Tenho médico de confiança. Vou trocar de médico depois de ler?',
-    a: 'Não — esse não é o objetivo. O livro te dá o vocabulário e o conhecimento para conversar com seu médico de igual para igual. Você vai fazer perguntas melhores, entender melhor as recomendações e tomar decisões mais informadas — junto com seu médico, não contra.',
-  },
-  {
-    q: 'Posso comprar para presentear?',
-    a: 'Sim, e é uma das melhores razões para comprar. Pais, filhos, amigos que estão num momento de virada — o livro tem a clareza necessária para ser presente útil. Linguagem acolhedora, evidência sólida, zero culpa.',
-  },
-];
 
 export function MevS8_FaqCta() {
   return (
@@ -52,7 +21,7 @@ export function MevS8_FaqCta() {
           </div>
 
           <ul className="space-y-3 mt-8">
-            {FAQ.map((item, i) => (
+            {faqMev.map((item, i) => (
               <FaqItem key={i} q={item.q} a={item.a} />
             ))}
           </ul>
