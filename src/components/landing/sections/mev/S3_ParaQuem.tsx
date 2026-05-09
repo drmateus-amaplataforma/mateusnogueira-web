@@ -6,11 +6,11 @@ import { audienceMev } from '@/lib/design-tokens';
 
 export function MevS3_ParaQuem() {
   return (
-    <Section>
+    <Section alt>
       <SectionHeader
         eyebrow="Para quem é"
-        heading="Para profissionais e pacientes que escolhem viver mais — e melhor."
-        subheading="Da clínica preventiva ao consultório de longevidade, do paciente que já tentou tudo ao adulto que entendeu que tempo de vida não basta sem qualidade de vida."
+        heading="Para quem quer entender o próprio corpo — e ter agência sobre a própria saúde."
+        subheading="Escrito em linguagem acessível, com profundidade científica. Para o público geral, é o livro de saúde que estava faltando no Brasil. Para profissionais, é referência que você vai querer indicar."
       />
 
       <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

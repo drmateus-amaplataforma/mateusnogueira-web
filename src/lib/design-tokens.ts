@@ -225,9 +225,9 @@ const utmPrefixMev =
 
 export const bookMev = {
   title: 'Nova Medicina do Estilo de Vida',
-  subtitle: 'Os 6 pilares para uma vida mais longa — e melhor.',
+  subtitle: 'Prevenção, Tratamento e Longevidade.',
   promise:
-    'Da prescrição genérica à medicina personalizada: o método para usar nutrição, movimento e sono como terapia de precisão para uma vida mais longa — e melhor.',
+    'Os 6 pilares que decidem como você vai viver os próximos 30, 50 ou 70 anos. Sem dieta da moda, sem promessas vazias, sem culpa — só a ciência que mudou tudo.',
   publisher: 'Editora Atheneu',
   publisherSince: 1928,
   publicationYear: 2026,
@@ -373,34 +373,89 @@ export const passagesMev = [
 
 export const audienceMev = [
   {
-    label: 'Médicos preventivistas e clínicos',
+    label: 'Quem quer chegar aos 80, 90, 100 com qualidade',
     description:
-      'Para quem quer entregar mais que receita: um método baseado em evidências para tratar metabolismo na raiz.',
+      'Para quem entendeu que viver mais não basta — quer viver com energia, autonomia e clareza até o fim.',
   },
   {
-    label: 'Nutrólogos e nutricionistas',
+    label: 'Quem cansou de receitas mágicas',
     description:
-      'Da contagem calórica à flexibilidade metabólica: a base científica que reposiciona qualidade acima de quantidade.',
+      'Para quem já tentou dietas da moda, treinos exaustivos e medicação sem critério — e quer um caminho com ciência de verdade.',
   },
   {
-    label: 'Geriatras e medicina de longevidade',
+    label: 'Quem cuida de quem ama',
     description:
-      'Os 6 pilares operacionalizados em protocolo aplicável — do consultório à rotina do paciente.',
+      'O livro que você dá para os pais, filhos, amigos. Linguagem clara, evidência sólida, sem culpabilizar ninguém.',
   },
   {
-    label: 'Pacientes e cuidadores',
+    label: 'Quem quer entender o que realmente importa',
     description:
-      'Para quem já tentou tudo: dietas, treinos, medicação. O método para sair do ciclo da culpa.',
+      'Estilo de vida vs. genética. Nutrição vs. dieta. Exercício vs. queimar calorias. As coisas certas, na ordem certa.',
   },
   {
-    label: 'Adultos focados em longevidade',
+    label: 'Profissionais de saúde — como humanos',
     description:
-      'Para quem entendeu que viver mais não basta — quer viver melhor, com energia e independência funcional.',
+      'Médicos, nutrólogos, geriatras, profissionais de saúde que querem aplicar em si antes de prescrever para outros.',
   },
   {
-    label: 'Educação física e fisiologistas',
+    label: 'Profissionais para indicar pacientes',
     description:
-      'A tradução dos princípios polarizado, FatMax e Zona 2 do esporte para a clínica preventiva.',
+      'O livro que você entrega para quem chega ao consultório com mil dúvidas. Responde as 50 maiores — em linguagem clara.',
+  },
+] as const;
+
+export const casosMev = [
+  {
+    name: 'Paciente L.P.',
+    duration: '8 meses',
+    before: 'VO₂máx 35,3 ml/kg/min · sobrepeso · cansaço crônico',
+    after: 'VO₂máx 43,0 ml/kg/min · −10,3 kg de gordura · +1,1 kg de músculo',
+    insight: 'Emagrecer ganhando massa magra. O oposto do que o Ozempic entrega.',
+  },
+  {
+    name: 'Carlos',
+    duration: '6 meses',
+    before: 'VO₂máx 28 ml/kg/min · pré-diabetes · pressão limítrofe',
+    after: 'VO₂máx 38 ml/kg/min · glicemia normalizada · pressão controlada',
+    insight: 'O que muda quando o tratamento ataca a causa, não o sintoma.',
+  },
+  {
+    name: 'Paciente com Doença de Crohn + Adenocarcinoma',
+    duration: '3 meses',
+    before: 'Inflamação crônica refratária a múltiplas terapias',
+    after: 'Marcadores inflamatórios sistêmicos regredidos',
+    insight: 'O caso que mudou o que entendo por medicina.',
+  },
+] as const;
+
+export const dadosViraisMev = [
+  {
+    big: '63%',
+    label: 'redução de mortalidade',
+    detail:
+      'A adesão a múltiplos hábitos saudáveis reduz a mortalidade por todas as causas em até 63%.',
+    source: 'Loef & Walach, 2012',
+  },
+  {
+    big: '14 anos',
+    label: 'a mais de vida',
+    detail:
+      'A diferença entre quem segue 5 hábitos básicos de saúde e quem não segue, em mulheres adultas.',
+    source: 'Nurses\' Health Study, Harvard',
+  },
+  {
+    big: 'Tsimané',
+    label: 'aterosclerose mínima',
+    detail:
+      'Povo da Bolívia: os menores níveis de aterosclerose coronária já registrados em qualquer população humana.',
+    source: 'Kaplan et al., The Lancet, 2017',
+  },
+  {
+    big: '≈ tabaco',
+    label: 'sedentarismo',
+    detail:
+      'O risco de morte por sedentarismo é comparável ao do tabagismo em estudos de coorte.',
+    source: 'Moore et al., NCI, 2012',
   },
 ] as const;
 

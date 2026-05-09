@@ -10,8 +10,16 @@ import { cn } from '@/lib/utils';
 
 const FAQ = [
   {
+    q: 'Eu não sou da área da saúde — vou conseguir entender?',
+    a: 'Sim. O livro foi escrito em linguagem acessível, com profundidade científica. Não tem fórmulas químicas indecifráveis nem jargão hospitalar. Tem ciência de verdade traduzida — com casos clínicos reais, gráficos claros e o método na ordem certa para você aplicar.',
+  },
+  {
+    q: 'É só mais um livro de "vida saudável"?',
+    a: 'Não. A maioria dos livros do gênero é achismo travestido de ciência ou ciência rasa travestida de motivação. Este é um cirurgião e doutor pela USP fazendo o oposto: ciência rigorosa em linguagem clara, sem promessas mágicas e sem culpabilizar o leitor.',
+  },
+  {
     q: 'Quando recebo o livro?',
-    a: 'A partir de 24 de maio de 2026, durante a janela de pré-venda. Após o lançamento, segue disponível para envio direto pela Editora Atheneu.',
+    a: 'A partir de 24 de maio de 2026. A Editora Atheneu envia direto do estoque conforme o cronograma de pré-venda. Após o lançamento, segue disponível para envio direto.',
   },
   {
     q: 'Qual a forma de pagamento?',
@@ -22,16 +30,12 @@ const FAQ = [
     a: 'A pré-venda atual é da edição impressa. Versões digitais futuras seguem cronograma editorial da Atheneu.',
   },
   {
-    q: 'Preciso ser profissional de saúde para ler?',
-    a: 'Não. O livro foi escrito com rigor científico mas em linguagem acessível. Profissionais (médicos, nutrólogos, geriatras, educadores físicos) encontrarão protocolos aplicáveis. Pacientes e adultos interessados em longevidade encontrarão o método para reorganizar o próprio estilo de vida — sem culpa e sem promessas mágicas.',
+    q: 'Tenho médico de confiança. Vou trocar de médico depois de ler?',
+    a: 'Não — esse não é o objetivo. O livro te dá o vocabulário e o conhecimento para conversar com seu médico de igual para igual. Você vai fazer perguntas melhores, entender melhor as recomendações e tomar decisões mais informadas — junto com seu médico, não contra.',
   },
   {
-    q: 'Esse livro substitui o "Avaliação Metabólica Avançada"?',
-    a: 'Não — eles são complementares. "Avaliação Metabólica Avançada" detalha as ferramentas técnicas (TCPE, calorimetria indireta, SVDL). "Nova Medicina do Estilo de Vida" detalha a filosofia, os 6 pilares e a aplicação clínica do método MEV 3.0. Recomendado lê-los na ordem em que foram escritos: este primeiro, o técnico depois.',
-  },
-  {
-    q: 'O método é o mesmo aplicado na Plataforma AMA?',
-    a: 'Sim. A Plataforma AMA (amaplataforma.com.br) é a operacionalização clínica do método descrito neste livro. Quem lê o livro entende a Plataforma; quem usa a Plataforma volta ao livro para aprofundar a fundamentação.',
+    q: 'Posso comprar para presentear?',
+    a: 'Sim, e é uma das melhores razões para comprar. Pais, filhos, amigos que estão num momento de virada — o livro tem a clareza necessária para ser presente útil. Linguagem acolhedora, evidência sólida, zero culpa.',
   },
 ];
 
@@ -61,7 +65,7 @@ export function MevS8_FaqCta() {
               Quer receber novidades?
             </h3>
             <p className="text-sm text-mateus-muted leading-relaxed">
-              Inscreva-se e receba <strong className="text-mateus-primary">avisos do autor</strong> sobre o lançamento, eventos científicos e materiais complementares.
+              Inscreva-se e receba <strong className="text-mateus-primary">avisos do autor</strong> sobre o lançamento, eventos e materiais complementares.
             </p>
           </div>
 

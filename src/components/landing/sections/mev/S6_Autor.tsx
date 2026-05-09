@@ -7,14 +7,14 @@ import { author } from '@/lib/design-tokens';
 
 const CREDS = [
   { label: 'CRM-SP', value: '97.070' },
-  { label: 'Doutorado', value: 'USP' },
+  { label: 'Doutor pela', value: 'USP' },
   { label: 'Especialidades', value: 'Cirurgia · Esporte · Nutrologia' },
-  { label: 'Treinou', value: '+1.000 profissionais' },
+  { label: 'Atende em SP', value: 'desde 2010' },
 ];
 
 export function MevS6_Autor() {
   return (
-    <Section id="autor" alt>
+    <Section id="autor">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
@@ -41,10 +41,10 @@ export function MevS6_Autor() {
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-8 space-y-6"
         >
-          <p className="eyebrow">Autor · Skin in the game</p>
+          <p className="eyebrow">Autor · Uma história real</p>
 
           <h2 className="font-serif font-bold text-3xl sm:text-4xl lg:text-5xl text-mateus-primary leading-[1.1] tracking-tight">
-            Quem assina escreveu o livro depois de virar paciente.
+            O cirurgião que precisou virar paciente.
           </h2>
 
           <p className="text-xl font-extrabold text-mateus-primary">
@@ -52,33 +52,23 @@ export function MevS6_Autor() {
           </p>
 
           <p className="text-lg text-mateus-text/85 leading-relaxed">
-            Cirurgião, médico do esporte e nutrólogo. Doutor pela USP. Após um trombo no
-            tronco celíaco que o levou a 4 dias na UTI, redirecionou completamente sua
-            prática clínica para a medicina de estilo de vida — não como teoria, mas como
-            método aplicado em si próprio antes de ser oferecido a pacientes.
+            Aos 40 e poucos anos, Dr. Mateus teve um trombo no tronco celíaco que
+            o levou a 4 dias na UTI. Médico cirurgião, médico do esporte e nutrólogo,
+            doutor pela Universidade de São Paulo, passou da prática técnica para
+            entender por dentro o que significa ser paciente. Esse momento mudou tudo.
           </p>
 
           <p className="text-base text-mateus-text/85 leading-relaxed">
-            Autor de <em className="font-serif">Avaliação Metabólica Avançada</em> e{' '}
-            <em className="font-serif">Nova Medicina do Estilo de Vida</em> (Atheneu, 2026).{' '}
-            <strong className="font-extrabold text-mateus-primary">
-              Fundador da Plataforma AMA
-            </strong>{' '}
-            (
-            <a
-              href="https://amaplataforma.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline text-mateus-primary hover:text-mateus-lilas"
-            >
-              amaplataforma.com.br
-            </a>
-            ) — onde o método MEV 3.0 deste livro é aplicado em produção, em tempo real.
+            Reconfigurou a própria saúde aplicando o método que descreve neste livro —
+            os 6 pilares, sem dieta da moda, sem promessas mágicas. Hoje opera, atende e
+            orienta milhares de pessoas com a mesma metodologia que reconstruiu a si
+            mesmo.
           </p>
 
-          <div className="bg-mateus-white border border-mateus-accent/15 rounded-xl p-5 mt-6">
+          <div className="bg-mateus-bg-alt border border-mateus-accent/15 rounded-xl p-5 mt-6">
             <p className="font-serif italic text-mateus-primary text-lg leading-relaxed">
-              “O cirurgião que precisou virar paciente e voltou com método.”
+              “Se você abrir este livro, vai entrar na cabeça de um cirurgião que sabe
+              o que está em jogo — porque atravessou.”
             </p>
           </div>
 
@@ -94,6 +84,12 @@ export function MevS6_Autor() {
               </div>
             ))}
           </div>
+
+          <p className="text-sm text-mateus-muted/80 leading-relaxed pt-2">
+            Autor de <em className="font-serif">Avaliação Metabólica Avançada na Saúde
+            e no Desempenho</em> e <em className="font-serif">Nova Medicina do Estilo
+            de Vida</em> (Editora Atheneu, 2026).
+          </p>
         </motion.div>
       </div>
     </Section>

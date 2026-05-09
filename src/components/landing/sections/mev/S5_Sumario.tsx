@@ -10,17 +10,17 @@ export function MevS5_Sumario() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <Section id="conteudo">
+    <Section id="conteudo" alt>
       <SectionHeader
-        eyebrow="Conteúdo"
-        heading="O que você vai encontrar."
-        subheading="8 capítulos do paradigma evolutivo aos 6 pilares aplicados — com casos clínicos reais e roteiro prático de 7 dias."
+        eyebrow="O livro por dentro"
+        heading="O que você vai descobrir."
+        subheading="8 capítulos em linguagem que você entende — com casos clínicos, dados de pesquisas e a ciência por trás de cada decisão. Mais um apêndice prático: a sua primeira semana de Vida Ativa em 7 dias."
       />
 
       <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 mb-16 max-w-3xl">
         <Stat number={bookMev.totalChapters} label="capítulos + apêndice" />
-        <Stat number={'6'} label="pilares operacionais" />
-        <Stat number={bookMev.totalReferences + '+'} label="referências por pares" />
+        <Stat number={'6'} label="pilares do estilo de vida" />
+        <Stat number={bookMev.totalReferences + '+'} label="referências científicas" />
         <Stat number={'~' + bookMev.estimatedPages} label="páginas (impressas)" />
       </div>
 
