@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Header } from '@/components/landing/ui/Header';
 import { Footer } from '@/components/landing/ui/Footer';
+import { getBookSchema, jsonLdScriptProps } from '@/lib/seo/jsonld';
 import { S1_Hero } from '@/components/landing/sections/S1_Hero';
 import { S2_AtheneuLegacy } from '@/components/landing/sections/S2_AtheneuLegacy';
 import { S3_Sumario } from '@/components/landing/sections/S3_Sumario';
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
 export default function AvaliacaoMetabolicaPage() {
   return (
     <>
+      <script {...jsonLdScriptProps(getBookSchema('avaliacao-metabolica'))} />
       <Header mode="lp1" />
       <main>
         <S1_Hero />

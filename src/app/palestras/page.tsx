@@ -12,6 +12,7 @@ import { DotGrid } from '@/components/landing/ui/DotGrid';
 import { AnimatedFilete } from '@/components/landing/ui/AnimatedFilete';
 import { ScrollIndicator } from '@/components/landing/ui/ScrollIndicator';
 import { author, book, bookMev } from '@/lib/design-tokens';
+import { getCourseSchema, jsonLdScriptProps } from '@/lib/seo/jsonld';
 
 export const metadata: Metadata = {
   title: 'Palestras',
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
 export default function PalestrasPage() {
   return (
     <>
+      <script {...jsonLdScriptProps(getCourseSchema())} />
       <Header mode="institutional" />
       <main>
         <HeroSection />

@@ -2,6 +2,8 @@
 
 import { useState, useRef, type FormEvent } from 'react';
 import { cn } from '@/lib/utils';
+import { utmsAsPayload } from '@/lib/utm';
+import { trackBoth } from '@/lib/track';
 
 export type LeadOrigem =
   | 'palestra'
@@ -149,17 +151,15 @@ export function LeadForm(props: LeadFormProps) {
       return;
     }
 
-    const params =
-      typeof window !== 'undefined'
-        ? new URLSearchParams(window.location.search)
-        : null;
+    // UTMs vêm do helper canônico — captura URL atual + cookie de
+    // first-touch (30d) e devolve as 5 chaves utm_* (string vazia se
+    // ausentes). Persiste cookie só com consent.analytics.
+    const utms = utmsAsPayload();
 
     const payload: Record<string, unknown> = {
       ...data,
       origem,
-      utm_source: params?.get('utm_source') ?? '',
-      utm_medium: params?.get('utm_medium') ?? '',
-      utm_campaign: params?.get('utm_campaign') ?? '',
+      ...utms,
       submitted_at: new Date().toISOString(),
     };
 
@@ -184,6 +184,16 @@ export function LeadForm(props: LeadFormProps) {
       }
       setStatus('success');
       formRef.current?.reset();
+
+      // Tracking Lead — gated por consent (no-op silencioso sem consent).
+      trackBoth('Lead', 'lead_submitted', {
+        content_name: origem,
+        content_category: LEGACY_LIVRO_ORIGENS.has(origem)
+          ? 'livro'
+          : origem,
+        utm_source: utms.utm_source || undefined,
+        utm_campaign: utms.utm_campaign || undefined,
+      });
     } catch {
       setErrorMsg('Não foi possível registrar agora. Verifique sua conexão.');
       setStatus('error');

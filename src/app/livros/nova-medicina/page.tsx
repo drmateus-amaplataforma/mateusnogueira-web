@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Header } from '@/components/landing/ui/Header';
 import { Footer } from '@/components/landing/ui/Footer';
+import { getBookSchema, jsonLdScriptProps } from '@/lib/seo/jsonld';
 import { MevS1_Hero } from '@/components/landing/sections/mev/S1_Hero';
 import { MevS2_AtheneuLegacy } from '@/components/landing/sections/mev/S2_AtheneuLegacy';
 import { MevS3_ParaQuem } from '@/components/landing/sections/mev/S3_ParaQuem';
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
 export default function NovaMedicinaPage() {
   return (
     <>
+      <script {...jsonLdScriptProps(getBookSchema('nova-medicina'))} />
       <Header mode="lp2" />
       <main>
         <MevS1_Hero />
