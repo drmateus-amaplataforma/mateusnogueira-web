@@ -3,9 +3,28 @@
 import { useState, useRef, type FormEvent } from 'react';
 import { cn } from '@/lib/utils';
 
-interface LeadFormProps {
-  livro: 'avaliacao-metabolica' | 'nova-medicina';
-}
+export type LeadOrigem =
+  | 'palestra'
+  | 'avaliacao-metabolica'
+  | 'nova-medicina'
+  | 'contato'
+  | 'midia';
+
+/** @deprecated use `origem` (mantido para retrocompatibilidade com S8 LP1/LP2). */
+type LegacyLivro = 'avaliacao-metabolica' | 'nova-medicina';
+
+type LeadFormProps =
+  | {
+      origem: LeadOrigem;
+      livro?: never;
+      submitLabel?: string;
+    }
+  | {
+      /** @deprecated migrar para `origem`. */
+      livro: LegacyLivro;
+      origem?: never;
+      submitLabel?: string;
+    };
 
 const inputCls = cn(
   'w-full bg-mateus-white border border-mateus-accent/20 rounded-lg',
@@ -14,12 +33,110 @@ const inputCls = cn(
   'transition-colors'
 );
 
-const labelCls = 'text-xs font-medium text-mateus-muted uppercase tracking-eyebrow';
+const labelCls =
+  'text-xs font-medium text-mateus-muted uppercase tracking-eyebrow';
 
-export function LeadForm({ livro }: LeadFormProps) {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMsg, setErrorMsg] = useState('Não foi possível registrar sua inscrição agora.');
+interface OrigemConfig {
+  successHeading: string;
+  successBody: React.ReactNode;
+  defaultSubmitLabel: string;
+  showAmostraDownload: boolean;
+  amostraHref?: string;
+}
+
+const ORIGEM_CONFIG: Record<LeadOrigem, OrigemConfig> = {
+  palestra: {
+    successHeading: 'Solicitação registrada.',
+    successBody: (
+      <>
+        Recebemos sua solicitação de palestra.{' '}
+        <strong className="text-mateus-primary">
+          Retorno em 48h úteis
+        </strong>{' '}
+        com agenda, formatos e valores.
+      </>
+    ),
+    defaultSubmitLabel: 'Solicitar palestra →',
+    showAmostraDownload: false,
+  },
+  'avaliacao-metabolica': {
+    successHeading: 'Inscrição registrada.',
+    successBody: (
+      <>
+        Você receberá em seu e-mail a{' '}
+        <strong className="text-mateus-primary">amostra oficial Atheneu</strong>{' '}
+        e novidades sobre o lançamento, eventos científicos e materiais
+        complementares.
+      </>
+    ),
+    defaultSubmitLabel: 'Receber amostra + novidades →',
+    showAmostraDownload: true,
+    amostraHref: '/livros/avaliacao-metabolica/amostra-livro.pdf',
+  },
+  'nova-medicina': {
+    successHeading: 'Inscrição registrada.',
+    successBody: (
+      <>
+        Você receberá em seu e-mail novidades sobre o lançamento, eventos
+        científicos e materiais complementares de{' '}
+        <strong className="text-mateus-primary">
+          Nova Medicina do Estilo de Vida
+        </strong>
+        .
+      </>
+    ),
+    defaultSubmitLabel: 'Receber novidades →',
+    showAmostraDownload: false,
+  },
+  contato: {
+    successHeading: 'Mensagem registrada.',
+    successBody: (
+      <>
+        Recebemos sua mensagem.{' '}
+        <strong className="text-mateus-primary">
+          Retorno em 24h úteis
+        </strong>{' '}
+        no e-mail informado.
+      </>
+    ),
+    defaultSubmitLabel: 'Enviar mensagem →',
+    showAmostraDownload: false,
+  },
+  midia: {
+    successHeading: 'Solicitação registrada.',
+    successBody: (
+      <>
+        Recebemos sua solicitação de imprensa.{' '}
+        <strong className="text-mateus-primary">
+          Retorno em 48h úteis
+        </strong>{' '}
+        com release oficial, fotos em alta e materiais complementares.
+      </>
+    ),
+    defaultSubmitLabel: 'Solicitar materiais de imprensa →',
+    showAmostraDownload: false,
+  },
+};
+
+const LEGACY_LIVRO_ORIGENS = new Set<LeadOrigem>([
+  'avaliacao-metabolica',
+  'nova-medicina',
+]);
+
+export function LeadForm(props: LeadFormProps) {
+  const origem: LeadOrigem = props.origem ?? props.livro!;
+  const submitLabel = props.submitLabel;
+
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>(
+    'idle'
+  );
+  const [errorMsg, setErrorMsg] = useState(
+    'Não foi possível registrar sua inscrição agora.'
+  );
   const formRef = useRef<HTMLFormElement>(null);
+
+  const config = ORIGEM_CONFIG[origem];
+  const buttonLabel = submitLabel ?? config.defaultSubmitLabel;
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -33,15 +150,25 @@ export function LeadForm({ livro }: LeadFormProps) {
     }
 
     const params =
-      typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
-    const payload = {
+      typeof window !== 'undefined'
+        ? new URLSearchParams(window.location.search)
+        : null;
+
+    const payload: Record<string, unknown> = {
       ...data,
-      livro,
+      origem,
       utm_source: params?.get('utm_source') ?? '',
       utm_medium: params?.get('utm_medium') ?? '',
       utm_campaign: params?.get('utm_campaign') ?? '',
       submitted_at: new Date().toISOString(),
     };
+
+    // Compat: enquanto consumidores externos (Make blueprint) ainda esperam
+    // a chave legada `livro`, ecoamos o slug do livro quando a origem for de
+    // pré-venda. Pode ser removido assim que o blueprint Notify for migrado.
+    if (LEGACY_LIVRO_ORIGENS.has(origem)) {
+      payload.livro = origem;
+    }
 
     try {
       const res = await fetch('/api/lead', {
@@ -78,20 +205,22 @@ export function LeadForm({ livro }: LeadFormProps) {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl font-extrabold text-mateus-primary">Inscrição registrada.</h3>
+        <h3 className="text-xl font-extrabold text-mateus-primary">
+          {config.successHeading}
+        </h3>
         <p className="text-sm text-mateus-muted leading-relaxed">
-          Você receberá em seu e-mail a{' '}
-          <strong className="text-mateus-primary">amostra oficial Atheneu</strong> e novidades
-          sobre o lançamento, eventos científicos e materiais complementares.
+          {config.successBody}
         </p>
-        <a
-          href="/livros/avaliacao/amostra-livro.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block mt-2 text-sm text-mateus-primary underline hover:text-mateus-primary-deep"
-        >
-          Baixar amostra agora →
-        </a>
+        {config.showAmostraDownload && config.amostraHref && (
+          <a
+            href={config.amostraHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-2 text-sm text-mateus-primary underline hover:text-mateus-primary-deep"
+          >
+            Baixar amostra agora →
+          </a>
+        )}
       </div>
     );
   }
@@ -101,6 +230,7 @@ export function LeadForm({ livro }: LeadFormProps) {
       ref={formRef}
       onSubmit={handleSubmit}
       className="rounded-2xl border border-mateus-accent/15 bg-mateus-white p-8 space-y-5 shadow-card-soft"
+      data-origem={origem}
     >
       <div className="space-y-1.5">
         <label htmlFor="lead-nome" className={labelCls}>
@@ -177,7 +307,7 @@ export function LeadForm({ livro }: LeadFormProps) {
           'shadow-cta-primary disabled:opacity-60 disabled:cursor-not-allowed'
         )}
       >
-        {status === 'loading' ? 'Enviando…' : 'Receber amostra + novidades →'}
+        {status === 'loading' ? 'Enviando…' : buttonLabel}
       </button>
 
       {status === 'error' && (
@@ -187,7 +317,13 @@ export function LeadForm({ livro }: LeadFormProps) {
       )}
 
       <p className="text-xs text-mateus-muted text-center leading-relaxed">
-        Você receberá a amostra oficial Atheneu em PDF + avisos do autor. Sem spam. Pode descadastrar a qualquer momento.
+        {origem === 'palestra'
+          ? 'Você receberá retorno do escritório do Dr. Mateus em até 48h úteis com proposta de agenda, formatos e valores. Sem spam.'
+          : origem === 'contato'
+            ? 'Você receberá retorno em até 24h úteis no e-mail informado. Sem spam.'
+            : origem === 'midia'
+              ? 'Você receberá release oficial, fotos em alta e contato direto da assessoria. Sem spam.'
+              : 'Você receberá a amostra oficial Atheneu em PDF + avisos do autor. Sem spam. Pode descadastrar a qualquer momento.'}
       </p>
     </form>
   );
