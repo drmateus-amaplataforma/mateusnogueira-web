@@ -10,6 +10,9 @@ const config: Config = {
           'primary-deep': '#0F1A2E',
           accent: '#8B7355',
           gold: '#B08538',
+          lilas: '#6B5B95',
+          'lilas-light': '#9E8FB8',
+          'lilas-deep': '#4D3E76',
           bg: '#FAF7F2',
           'bg-alt': '#F0EBE3',
           text: '#1F2A44',
@@ -28,6 +31,7 @@ const config: Config = {
       boxShadow: {
         'cta-primary': '0 0 20px rgba(31, 42, 68, 0.25)',
         'cta-gold': '0 0 24px rgba(176, 133, 56, 0.18)',
+        'cta-lilas': '0 0 24px rgba(107, 91, 149, 0.22)',
         'card-soft': '0 4px 24px rgba(31, 42, 68, 0.06)',
       },
       letterSpacing: {

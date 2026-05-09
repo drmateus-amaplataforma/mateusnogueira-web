@@ -3,6 +3,9 @@ export const colors = {
   primaryDeep: '#0F1A2E',
   accent: '#8B7355',
   gold: '#B08538',
+  lilas: '#6B5B95',
+  lilasLight: '#9E8FB8',
+  lilasDeep: '#4D3E76',
   bg: '#FAF7F2',
   bgAlt: '#F0EBE3',
   text: '#1F2A44',
@@ -210,6 +213,194 @@ export const chapters = [
       'MEV 3.0 e a Medicina dos 4 P\'s',
       'Da disfunção mitocondrial ao "atleta da saúde"',
     ],
+  },
+] as const;
+
+// =====================================================
+// LP2 — Nova Medicina do Estilo de Vida
+// =====================================================
+
+const utmPrefixMev =
+  '?utm_source=mateusnogueira&utm_medium=landing&utm_campaign=lp2_novamev';
+
+export const bookMev = {
+  title: 'Nova Medicina do Estilo de Vida',
+  subtitle: 'Os 6 pilares para uma vida mais longa — e melhor.',
+  promise:
+    'Da prescrição genérica à medicina personalizada: o método para usar nutrição, movimento e sono como terapia de precisão para uma vida mais longa — e melhor.',
+  publisher: 'Editora Atheneu',
+  publisherSince: 1928,
+  publicationYear: 2026,
+  priceFull: 139,
+  installments: { count: 3, value: 46.33 },
+  preSaleEndDate: '2026-05-24',
+  shippingStartDate: '2026-05-24',
+  atheneuUrl:
+    'https://www.atheneu.com.br/nova-medicina-do-estilo-de-vida',
+  ctaUrl: (position: string) =>
+    `https://www.atheneu.com.br/nova-medicina-do-estilo-de-vida${utmPrefixMev}&utm_content=${encodeURIComponent(position)}`,
+  slug: 'nova-medicina',
+  totalChapters: 8,
+  totalFigures: 6,
+  totalReferences: 68,
+  estimatedPages: 120,
+} as const;
+
+export const nelson = {
+  name: 'Prof. Dr. Nelson Iucif Junior',
+  credentials: 'Médico Geriatra e Nutrólogo',
+  quote:
+    'É um livro que orienta sem intimidar, motiva sem prometer milagres e convida o leitor a assumir o protagonismo da própria trajetória de saúde, com informação de qualidade e senso de responsabilidade.',
+} as const;
+
+export const chaptersMev = [
+  {
+    n: 1,
+    title: 'Qual é o estado metabólico natural do ser humano?',
+    subtitle: 'Herança evolutiva vs. mundo moderno',
+    takeaways: [
+      'Atividade física como calibragem, não como queima de calorias',
+      'Contradição evolutiva: instintos ancestrais em ambiente de abundância',
+      'Por que dietas restritivas falham',
+      'Origem dopaminérgica da compulsão alimentar',
+    ],
+  },
+  {
+    n: 2,
+    title: 'Quebrando paradigmas',
+    subtitle: 'Metabolismo, emagrecimento e bem-estar',
+    takeaways: [
+      'Quantidade vs. qualidade · Metabolismo vs. longevidade',
+      'Estudo de San-Millán sobre flexibilidade metabólica',
+      'Motor flexível vs. motor travado',
+      'Estudo das Enfermeiras: até 14 anos a mais de vida',
+      'Sedentarismo é fator de risco comparável ao tabagismo',
+    ],
+  },
+  {
+    n: 3,
+    title: 'O homem moderno, os alimentos e a medicina ocidental',
+    subtitle: 'Hipercalóricos, parâmetros laboratoriais e fórmulas mágicas',
+    takeaways: [
+      '5 estágios evolutivos do metabolismo humano',
+      'Por que 70 anos não bastam para adaptação biológica',
+      'Crítica aos atalhos farmacológicos (Mounjaro, Ozempic, sibutramina)',
+      'Reframe da culpa: "não é só sua"',
+    ],
+  },
+  {
+    n: 4,
+    title: 'Expectativa e qualidade de vida',
+    subtitle: 'A fome, a insulina, o estresse, o sono — sem pânico',
+    takeaways: [
+      'Insulina como hormônio central das doenças crônicas',
+      'Eixo cortisol-sono-gordura visceral',
+      'Por que o pânico bloqueia a transformação',
+    ],
+  },
+  {
+    n: 5,
+    title: 'Medicina 3.0',
+    subtitle: 'Um novo olhar para a saúde',
+    takeaways: [
+      'Reativo vs. proativo: limites da Medicina 2.0',
+      'Caso da paciente com câncer de pâncreas que prolongou sobrevida',
+      'Por que protocolos genéricos falham',
+      'A virada cognitiva como pré-requisito',
+    ],
+  },
+  {
+    n: 6,
+    title: 'Os 6 pilares da medicina do estilo de vida',
+    subtitle: 'Atividade física · Alimentação · Sono · Estresse · Conexões · Substâncias',
+    takeaways: [
+      'Hierarquia dos pilares — não é arbitrária',
+      '80/20: zonas de treinamento e princípio polarizado',
+      'Caso Carlos: VO₂ de 28 → 38 ml/kg/min em 6 meses',
+      'Adesão a múltiplos hábitos reduz mortalidade em 63%',
+    ],
+  },
+  {
+    n: 7,
+    title: 'Blue Zones e lições de longevidade',
+    subtitle: 'Ikaria · Okinawa · Sardenha · Nicoya · Loma Linda',
+    takeaways: [
+      'Tradição empírica vs. ciência aplicada',
+      'Tsimané: menores níveis de aterosclerose já registrados em humanos',
+      'Caso da paciente com Doença de Crohn + adenocarcinoma',
+      'Os Hadza e os Tsimané como espelho evolutivo',
+    ],
+  },
+  {
+    n: 8,
+    title: 'Saúde em movimento',
+    subtitle: 'A prática · O cotidiano · Caso real Paciente L.P.',
+    takeaways: [
+      'Relato pessoal: trombo no tronco celíaco e a virada profissional',
+      'Paciente L.P.: VO₂ 35,3 → 43,0 ml/kg/min em 8 meses',
+      '−10,3 kg de gordura · +1,1 kg de músculo',
+      'Apêndice: Roteiro de Início Rápido em 7 dias',
+    ],
+  },
+] as const;
+
+export const passagesMev = [
+  {
+    theme: 'Atividade física · Pilar 1',
+    chapter: 6,
+    page: 95,
+    text: 'A atividade física é mais do que ganho e perda de energia — ela modela todo o metabolismo humano. O que se busca é uma sintonia fina: desenvolver a complexa capacidade metabólica do organismo por meio de um equilíbrio estratégico entre os estímulos da atividade leve e os da atividade intensa. É justamente essa harmonia que favorece a biogênese mitocondrial — literalmente, o corpo passa a produzir mais mitocôndrias.',
+    amaScreenshot: '/livros/nova-medicina/ama/zonas-treino.png',
+    amaCaption: 'Plataforma AMA · prescrição de zonas de treinamento por VO₂ e limiares',
+  },
+  {
+    theme: 'Conexões sociais · Pilar 5',
+    chapter: 6,
+    page: 130,
+    text: 'O Harvard Study of Adult Development, acompanhando vidas desde 1938, revelou de forma consistente que o fator mais importante para uma vida longa, feliz e saudável não é a riqueza, a fama ou o sucesso profissional — mas sim a qualidade das nossas conexões significativas.',
+    amaScreenshot: '/livros/nova-medicina/ama/protocolo-mev.png',
+    amaCaption: 'Plataforma AMA · plano de cuidado integrado dos 6 pilares',
+  },
+  {
+    theme: 'Longevidade · Blue Zones',
+    chapter: 7,
+    page: 155,
+    text: 'Um estudo marcante revelou que os Tsimané, na Bolívia, possuem os menores níveis de aterosclerose coronária já registrados em qualquer população humana. A baixa expectativa média não vem de envelhecimento ruim ou doença crônica — mas de mortalidade infantil. Quem sobrevive aos perigos iniciais frequentemente atinge a velhice com uma saúde invejável.',
+    amaScreenshot: '/livros/nova-medicina/ama/nutricao-precisao.png',
+    amaCaption: 'Plataforma AMA · monitoramento de marcadores metabólicos',
+  },
+] as const;
+
+export const audienceMev = [
+  {
+    label: 'Médicos preventivistas e clínicos',
+    description:
+      'Para quem quer entregar mais que receita: um método baseado em evidências para tratar metabolismo na raiz.',
+  },
+  {
+    label: 'Nutrólogos e nutricionistas',
+    description:
+      'Da contagem calórica à flexibilidade metabólica: a base científica que reposiciona qualidade acima de quantidade.',
+  },
+  {
+    label: 'Geriatras e medicina de longevidade',
+    description:
+      'Os 6 pilares operacionalizados em protocolo aplicável — do consultório à rotina do paciente.',
+  },
+  {
+    label: 'Pacientes e cuidadores',
+    description:
+      'Para quem já tentou tudo: dietas, treinos, medicação. O método para sair do ciclo da culpa.',
+  },
+  {
+    label: 'Adultos focados em longevidade',
+    description:
+      'Para quem entendeu que viver mais não basta — quer viver melhor, com energia e independência funcional.',
+  },
+  {
+    label: 'Educação física e fisiologistas',
+    description:
+      'A tradução dos princípios polarizado, FatMax e Zona 2 do esporte para a clínica preventiva.',
   },
 ] as const;
 
