@@ -7,6 +7,10 @@ import { CTAButton } from '@/components/landing/ui/CTAButton';
 import { Section, SectionHeader } from '@/components/landing/ui/Section';
 import { GlowCard } from '@/components/landing/ui/GlowCard';
 import { LeadForm } from '@/components/landing/ui/LeadForm';
+import { Reveal } from '@/components/landing/ui/Reveal';
+import { DotGrid } from '@/components/landing/ui/DotGrid';
+import { AnimatedFilete } from '@/components/landing/ui/AnimatedFilete';
+import { ScrollIndicator } from '@/components/landing/ui/ScrollIndicator';
 import { author, book, bookMev } from '@/lib/design-tokens';
 
 export const metadata: Metadata = {
@@ -61,47 +65,55 @@ export default function PalestrasPage() {
 function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-mateus-bg pt-12 pb-20 lg:pt-20 lg:pb-32">
+      <DotGrid className="opacity-30" />
+
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 opacity-40"
+        className="absolute inset-0 opacity-50"
         style={{
           background:
             'radial-gradient(circle at 80% 25%, rgba(176, 133, 56, 0.14), transparent 60%), radial-gradient(circle at 10% 90%, rgba(31, 42, 68, 0.10), transparent 65%)',
         }}
       />
 
-      <div className="container-content">
+      <div className="container-content relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-7 space-y-6 animate-fade-up">
-            <p className="eyebrow">
+          <div className="lg:col-span-7 space-y-6">
+            <Reveal as="p" className="eyebrow">
               <span className="text-mateus-gold">Palco · Empresas · Mídia</span>
-            </p>
+            </Reveal>
 
-            <h1 className="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl text-mateus-primary leading-[1.05] tracking-tight">
-              Avaliação metabólica avançada e medicina do estilo de vida em palco.
-            </h1>
+            <Reveal as="h1" delay={0.08}>
+              <span className="block font-serif font-bold text-4xl sm:text-5xl lg:text-6xl text-mateus-primary leading-[1.05] tracking-tight">
+                Avaliação metabólica avançada e medicina do estilo de vida em palco.
+              </span>
+            </Reveal>
 
-            <p className="text-lg sm:text-xl text-mateus-muted leading-relaxed max-w-2xl">
+            <Reveal as="p" delay={0.16} className="text-lg sm:text-xl text-mateus-muted leading-relaxed max-w-2xl">
               Keynotes, workshops e mentorias para empresas, congressos médicos e
               veículos de imprensa. Conteúdo científico denso traduzido em
               recomendações concretas — como na clínica, como no livro.
-            </p>
+            </Reveal>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-4">
+            <Reveal delay={0.24} className="flex flex-col sm:flex-row gap-3 pt-4">
               <CTAButton href="#booking" variant="primary" size="lg">
                 Solicitar palestra →
               </CTAButton>
               <CTAButton href="#topicos" variant="secondary" size="lg">
                 Ver temas e formatos
               </CTAButton>
-            </div>
+            </Reveal>
 
-            <p className="text-xs text-mateus-muted/80 pt-2">
+            <Reveal delay={0.32}>
+              <AnimatedFilete width={96} className="my-2" />
+            </Reveal>
+
+            <Reveal as="p" delay={0.4} className="text-xs text-mateus-muted/80">
               Retorno em 48h úteis · disponível para Brasil e exterior.
-            </p>
+            </Reveal>
           </div>
 
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <Reveal delay={0.12} className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="relative">
               <div
                 aria-hidden
@@ -111,7 +123,7 @@ function HeroSection() {
                     'radial-gradient(circle at 50% 50%, rgba(176, 133, 56, 0.35), transparent 70%)',
                 }}
               />
-              <div className="relative aspect-[3/4] w-[280px] sm:w-[340px] lg:w-[400px] rounded-2xl overflow-hidden shadow-card-soft ring-1 ring-mateus-accent/15">
+              <div className="relative aspect-[3/4] w-[280px] sm:w-[340px] lg:w-[400px] rounded-2xl overflow-hidden shadow-screenshot ring-1 ring-mateus-accent/15">
                 <Image
                   src="/palestrante/dr-mateus-hero.jpg"
                   alt="Dr. Mateus Antunes Nogueira — palestrante"
@@ -122,9 +134,11 @@ function HeroSection() {
                 />
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
+
+      <ScrollIndicator />
     </section>
   );
 }
@@ -157,14 +171,21 @@ const PROPOSTA = [
 function PropostaSection() {
   return (
     <Section id="proposta" alt>
-      <SectionHeader
-        eyebrow="Para quem"
-        heading="Três contextos onde Dr. Mateus entrega valor."
-        align="center"
-      />
+      <Reveal as="header">
+        <SectionHeader
+          eyebrow="Para quem"
+          heading="Três contextos onde Dr. Mateus entrega valor."
+          align="center"
+        />
+      </Reveal>
       <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
         {PROPOSTA.map((card, i) => (
-          <GlowCard key={card.heading} delay={i * 0.1} className="group h-full">
+          <GlowCard
+            key={card.heading}
+            delay={i * 0.1}
+            liftOnHover
+            className="group h-full"
+          >
             <div className="space-y-3">
               <p className="eyebrow text-mateus-gold">{card.eyebrow}</p>
               <h3 className="font-serif font-bold text-xl text-mateus-primary leading-tight">
@@ -222,14 +243,21 @@ const FORMATOS = [
 function FormatosSection() {
   return (
     <Section id="formatos">
-      <SectionHeader
-        eyebrow="Formatos disponíveis"
-        heading="Do palco à sala de board, três modos de entregar."
-        align="center"
-      />
+      <Reveal as="header">
+        <SectionHeader
+          eyebrow="Formatos disponíveis"
+          heading="Do palco à sala de board, três modos de entregar."
+          align="center"
+        />
+      </Reveal>
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {FORMATOS.map((f, i) => (
-          <GlowCard key={f.label} delay={i * 0.1} className="group h-full">
+          <GlowCard
+            key={f.label}
+            delay={i * 0.1}
+            liftOnHover
+            className="group h-full"
+          >
             <div className="flex flex-col h-full space-y-4">
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="font-serif font-bold text-2xl text-mateus-primary leading-none">
@@ -298,15 +326,22 @@ const TOPICOS = [
 function TopicosSection() {
   return (
     <Section id="topicos" alt>
-      <SectionHeader
-        eyebrow="Tópicos canônicos"
-        heading="Temas que Dr. Mateus apresenta com profundidade."
-        subheading="Cada tópico é adaptável em duração e densidade técnica conforme o público — de plateia médica especializada a executivos não-clínicos."
-        align="center"
-      />
+      <Reveal as="header">
+        <SectionHeader
+          eyebrow="Tópicos canônicos"
+          heading="Temas que Dr. Mateus apresenta com profundidade."
+          subheading="Cada tópico é adaptável em duração e densidade técnica conforme o público — de plateia médica especializada a executivos não-clínicos."
+          align="center"
+        />
+      </Reveal>
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {TOPICOS.map((t, i) => (
-          <GlowCard key={t.title} delay={i * 0.08} className="group h-full">
+          <GlowCard
+            key={t.title}
+            delay={i * 0.08}
+            liftOnHover
+            className="group h-full"
+          >
             <div className="space-y-3">
               <div className="flex items-baseline gap-3">
                 <span className="font-serif font-bold text-mateus-gold text-lg leading-none">
@@ -359,16 +394,18 @@ const CARGOS = [
 function CredenciaisSection() {
   return (
     <Section id="credenciais">
-      <SectionHeader
-        eyebrow="Quem fala"
-        heading={author.name}
-        subheading="Cirurgião que escreveu o livro · fundador da plataforma que aplica o método em tempo real."
-        align="center"
-      />
+      <Reveal as="header">
+        <SectionHeader
+          eyebrow="Quem fala"
+          heading={author.name}
+          subheading="Cirurgião que escreveu o livro · fundador da plataforma que aplica o método em tempo real."
+          align="center"
+        />
+      </Reveal>
 
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div className="lg:col-span-5 space-y-4">
-          <div className="rounded-2xl bg-mateus-white border border-mateus-accent/15 p-6 shadow-card-soft">
+        <Reveal delay={0.05} className="lg:col-span-5 space-y-4">
+          <div className="rounded-2xl bg-mateus-white border border-mateus-accent/15 p-6 shadow-card-soft transition-all duration-300 hover:shadow-card-hover hover:border-mateus-gold/40 hover:-translate-y-1">
             <p className="eyebrow text-mateus-gold mb-3">Formação clínica</p>
             <ul className="space-y-2.5">
               {author.specialties.map((s) => (
@@ -400,7 +437,7 @@ function CredenciaisSection() {
             </ul>
           </div>
 
-          <div className="rounded-2xl bg-mateus-white border border-mateus-accent/15 p-6 shadow-card-soft">
+          <div className="rounded-2xl bg-mateus-white border border-mateus-accent/15 p-6 shadow-card-soft transition-all duration-300 hover:shadow-card-hover hover:border-mateus-gold/40 hover:-translate-y-1">
             <p className="eyebrow text-mateus-gold mb-3">Liderança executiva</p>
             <ul className="space-y-3">
               {CARGOS.map((c) => (
@@ -415,9 +452,9 @@ function CredenciaisSection() {
               ))}
             </ul>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="lg:col-span-7 space-y-6">
+        <Reveal delay={0.15} className="lg:col-span-7 space-y-6">
           <div>
             <p className="eyebrow text-mateus-gold mb-3">Bio</p>
             <p className="text-base lg:text-lg text-mateus-text/90 leading-relaxed">
@@ -473,7 +510,7 @@ function CredenciaisSection() {
               </Link>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </Section>
   );
@@ -508,39 +545,41 @@ const GALERIA_PLACEHOLDERS = [
 function GaleriaSection() {
   return (
     <Section id="galeria" alt>
-      <SectionHeader
-        eyebrow="No palco"
-        heading="Eventos passados, mídia e bastidores."
-        subheading="Em curadoria. Em breve, registros recentes de keynotes, workshops e aparições em mídia."
-        align="center"
-      />
+      <Reveal as="header">
+        <SectionHeader
+          eyebrow="No palco"
+          heading="Eventos passados, mídia e bastidores."
+          subheading="Em curadoria. Em breve, registros recentes de keynotes, workshops e aparições em mídia."
+          align="center"
+        />
+      </Reveal>
       <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
         {GALERIA_PLACEHOLDERS.map((g, i) => (
-          <div
-            key={g.label}
-            className="group relative aspect-video rounded-2xl overflow-hidden border border-dashed border-mateus-accent/40 bg-mateus-white flex items-center justify-center text-center p-6 transition-colors hover:border-mateus-gold/50"
-            data-stagger-index={i}
-          >
+          <Reveal key={g.label} delay={i * 0.08}>
             <div
-              aria-hidden
-              className="absolute inset-0 opacity-30"
-              style={{
-                background:
-                  'radial-gradient(circle at 50% 100%, rgba(176, 133, 56, 0.15), transparent 70%)',
-              }}
-            />
-            <div className="relative space-y-2">
-              <p className="text-xs uppercase tracking-eyebrow text-mateus-gold font-semibold">
-                {g.label}
-              </p>
-              <p className="text-xs text-mateus-muted/80 italic max-w-[260px] mx-auto">
-                {g.hint}
-              </p>
-              <p className="text-[10px] uppercase tracking-eyebrow text-mateus-accent/60 pt-2">
-                TODO Doutor: enviar mídia
-              </p>
+              className="group relative aspect-video rounded-2xl overflow-hidden border border-dashed border-mateus-accent/40 bg-mateus-white flex items-center justify-center text-center p-6 transition-all duration-300 hover:border-mateus-gold/50 hover:shadow-card-hover hover:-translate-y-1"
+            >
+              <div
+                aria-hidden
+                className="absolute inset-0 opacity-30"
+                style={{
+                  background:
+                    'radial-gradient(circle at 50% 100%, rgba(176, 133, 56, 0.15), transparent 70%)',
+                }}
+              />
+              <div className="relative space-y-2">
+                <p className="text-xs uppercase tracking-eyebrow text-mateus-gold font-semibold">
+                  {g.label}
+                </p>
+                <p className="text-xs text-mateus-muted/80 italic max-w-[260px] mx-auto">
+                  {g.hint}
+                </p>
+                <p className="text-[10px] uppercase tracking-eyebrow text-mateus-accent/60 pt-2">
+                  TODO Doutor: enviar mídia
+                </p>
+              </div>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </Section>
@@ -557,11 +596,12 @@ function BookingSection() {
   return (
     <Section id="booking">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        <div className="lg:col-span-5 space-y-6">
+        <Reveal className="lg:col-span-5 space-y-6">
           <p className="eyebrow">Próximo passo</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl text-mateus-primary leading-tight">
             Vamos conversar sobre seu evento.
           </h2>
+          <AnimatedFilete width={64} className="my-2" />
           <p className="text-lg text-mateus-muted leading-relaxed">
             Conte sobre formato, plateia e expectativa. Retorno em{' '}
             <strong className="text-mateus-primary">48h úteis</strong> com
@@ -596,13 +636,13 @@ function BookingSection() {
               <em>especialidade</em>. Triagem prioritária.
             </p>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="lg:col-span-7 lg:sticky lg:top-24">
+        <Reveal delay={0.1} className="lg:col-span-7 lg:sticky lg:top-24">
           <div className="rounded-2xl bg-mateus-white border border-mateus-accent/15 shadow-card-soft p-6 sm:p-8">
             <LeadForm origem="palestra" />
           </div>
-        </div>
+        </Reveal>
       </div>
     </Section>
   );
@@ -644,39 +684,42 @@ const FAQ_ITENS = [
 function FaqSection() {
   return (
     <Section id="faq" alt>
-      <SectionHeader
-        eyebrow="Perguntas frequentes"
-        heading="Tudo que você precisa saber antes de fechar."
-        align="center"
-      />
+      <Reveal as="header">
+        <SectionHeader
+          eyebrow="Perguntas frequentes"
+          heading="Tudo que você precisa saber antes de fechar."
+          align="center"
+        />
+      </Reveal>
       <div className="mt-12 max-w-3xl mx-auto space-y-3">
         {FAQ_ITENS.map((item, i) => (
-          <details
-            key={item.q}
-            className="group rounded-xl bg-mateus-white border border-mateus-accent/15 overflow-hidden transition-colors hover:border-mateus-accent/35 open:border-mateus-gold/40 open:shadow-card-soft"
-          >
-            <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 select-none">
-              <span className="flex items-baseline gap-3 flex-1">
-                <span className="font-serif font-bold text-mateus-gold text-sm leading-none">
-                  {String(i + 1).padStart(2, '0')}
+          <Reveal key={item.q} delay={i * 0.05}>
+            <details
+              className="group rounded-xl bg-mateus-white border border-mateus-accent/15 overflow-hidden transition-all duration-300 hover:border-mateus-accent/35 hover:shadow-card-soft open:border-mateus-gold/40 open:shadow-card-soft"
+            >
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 select-none">
+                <span className="flex items-baseline gap-3 flex-1">
+                  <span className="font-serif font-bold text-mateus-gold text-sm leading-none">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="font-semibold text-mateus-primary text-base sm:text-lg leading-snug">
+                    {item.q}
+                  </span>
                 </span>
-                <span className="font-semibold text-mateus-primary text-base sm:text-lg leading-snug">
-                  {item.q}
+                <span
+                  aria-hidden
+                  className="flex-shrink-0 text-mateus-gold text-xl font-light transition-transform duration-300 group-open:rotate-45"
+                >
+                  +
                 </span>
-              </span>
-              <span
-                aria-hidden
-                className="flex-shrink-0 text-mateus-gold text-xl font-light transition-transform duration-300 group-open:rotate-45"
-              >
-                +
-              </span>
-            </summary>
-            <div className="px-6 pb-5 pt-0 -mt-1">
-              <p className="text-sm text-mateus-text/85 leading-relaxed pl-7">
-                {item.a}
-              </p>
-            </div>
-          </details>
+              </summary>
+              <div className="px-6 pb-5 pt-0 -mt-1">
+                <p className="text-sm text-mateus-text/85 leading-relaxed pl-7">
+                  {item.a}
+                </p>
+              </div>
+            </details>
+          </Reveal>
         ))}
       </div>
     </Section>
@@ -690,6 +733,7 @@ function FaqSection() {
 function CtaFinalSection() {
   return (
     <section className="relative overflow-hidden bg-mateus-primary py-20 lg:py-28">
+      <DotGrid className="opacity-15" />
       <div
         aria-hidden
         className="absolute inset-0 opacity-50"
@@ -699,11 +743,14 @@ function CtaFinalSection() {
         }}
       />
       <div className="container-content relative">
-        <div className="max-w-3xl mx-auto text-center space-y-6">
+        <Reveal className="max-w-3xl mx-auto text-center space-y-6">
           <p className="eyebrow text-mateus-gold">Próximo evento</p>
           <h2 className="font-serif font-bold text-3xl sm:text-4xl lg:text-5xl text-mateus-white leading-tight">
             Pronto para trazer Dr. Mateus ao seu evento?
           </h2>
+          <div className="flex justify-center">
+            <AnimatedFilete width={80} align="center" />
+          </div>
           <p className="text-lg text-mateus-white/80 leading-relaxed max-w-2xl mx-auto">
             Solicite proposta detalhada em 48h úteis. Conteúdo científico
             denso, traduzido em recomendações concretas — como na clínica,
@@ -720,7 +767,7 @@ function CtaFinalSection() {
               Ver temas
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

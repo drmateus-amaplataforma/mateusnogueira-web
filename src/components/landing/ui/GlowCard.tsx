@@ -8,6 +8,12 @@ interface GlowCardProps {
   className?: string;
   delay?: number;
   variant?: 'default' | 'gold';
+  /**
+   * Opt-in premium hover-lift: card sobe 4px e ganha shadow-card-hover
+   * + border-gold/40 (igual padrão Home/Sobre). Default false para
+   * preservar comportamento original em LP1/LP2.
+   */
+  liftOnHover?: boolean;
 }
 
 export function GlowCard({
@@ -15,6 +21,7 @@ export function GlowCard({
   className,
   delay = 0,
   variant = 'default',
+  liftOnHover = false,
 }: GlowCardProps) {
   return (
     <motion.div
@@ -22,10 +29,13 @@ export function GlowCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={liftOnHover ? { y: -4, transition: { duration: 0.2 } } : undefined}
       className={cn(
         'relative overflow-hidden rounded-2xl bg-mateus-white p-8',
         'border border-mateus-accent/15 shadow-card-soft',
-        'transition-colors duration-300 hover:border-mateus-accent/35',
+        liftOnHover
+          ? 'transition-all duration-300 hover:shadow-card-hover hover:border-mateus-gold/40'
+          : 'transition-colors duration-300 hover:border-mateus-accent/35',
         className
       )}
     >
