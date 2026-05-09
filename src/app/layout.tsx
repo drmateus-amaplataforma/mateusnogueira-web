@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DM_Sans, Crimson_Pro } from 'next/font/google';
 import './globals.css';
+import { MotionProvider } from '@/components/landing/ui/MotionProvider';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -52,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${dmSans.variable} ${crimsonPro.variable}`}>
       <body className="min-h-screen bg-mateus-bg text-mateus-text antialiased">
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

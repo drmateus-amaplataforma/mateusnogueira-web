@@ -85,6 +85,25 @@ body {
       padding-block: 7.5rem;
     }
   }
+
+  /* Pattern decorativo — usado por <DotGrid /> via className `dot-grid-mateus` */
+  .dot-grid-mateus {
+    background-image: radial-gradient(
+      circle,
+      rgba(176, 133, 56, 0.16) 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
+  }
+
+  /* Texto com gradiente navy → gold (premium headlines) */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--mateus-primary) 0%, var(--mateus-gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
