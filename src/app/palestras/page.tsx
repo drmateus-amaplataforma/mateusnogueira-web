@@ -6,6 +6,7 @@ import { Footer } from '@/components/landing/ui/Footer';
 import { CTAButton } from '@/components/landing/ui/CTAButton';
 import { Section, SectionHeader } from '@/components/landing/ui/Section';
 import { GlowCard } from '@/components/landing/ui/GlowCard';
+import { author, book, bookMev } from '@/lib/design-tokens';
 
 export const metadata: Metadata = {
   title: 'Palestras',
@@ -38,6 +39,8 @@ export default function PalestrasPage() {
         <PropostaSection />
         <FormatosSection />
         <TopicosSection />
+        <CredenciaisSection />
+        <GaleriaSection />
       </main>
       <Footer />
     </>
@@ -319,6 +322,221 @@ function TopicosSection() {
               )}
             </div>
           </GlowCard>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+// =====================================================================
+// 5. Credenciais — autoridade do palestrante
+// =====================================================================
+// Reusa author{} de design-tokens.ts + book/bookMev para links Atheneu.
+// Dados clínicos canônicos — NUNCA inventar credenciais aqui.
+
+const CARGOS = [
+  {
+    role: 'CEO',
+    org: 'Plataforma AMA',
+    desc: 'SaaS médico para Calorimetria Indireta + TCPE (lançamento maio/2026).',
+  },
+  {
+    role: 'Diretor científico',
+    org: 'Vida Ativa Ensino e Pesquisa',
+    desc: 'Educação continuada para profissionais de saúde em medicina do exercício.',
+  },
+  {
+    role: 'Founder',
+    org: 'Oxy Recovery',
+    desc: 'Clínica de medicina do estilo de vida e recovery em São Paulo.',
+  },
+] as const;
+
+function CredenciaisSection() {
+  return (
+    <Section id="credenciais">
+      <SectionHeader
+        eyebrow="Quem fala"
+        heading={author.name}
+        subheading="Cirurgião que escreveu o livro · fundador da plataforma que aplica o método em tempo real."
+        align="center"
+      />
+
+      <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="lg:col-span-5 space-y-4">
+          <div className="rounded-2xl bg-mateus-white border border-mateus-accent/15 p-6 shadow-card-soft">
+            <p className="eyebrow text-mateus-gold mb-3">Formação clínica</p>
+            <ul className="space-y-2.5">
+              {author.specialties.map((s) => (
+                <li
+                  key={s}
+                  className="text-sm text-mateus-text/85 flex items-start gap-3"
+                >
+                  <span
+                    aria-hidden
+                    className="mt-1.5 h-1.5 w-1.5 rounded-full bg-mateus-gold flex-shrink-0"
+                  />
+                  <span>{s}</span>
+                </li>
+              ))}
+              <li className="text-sm text-mateus-text/85 flex items-start gap-3">
+                <span
+                  aria-hidden
+                  className="mt-1.5 h-1.5 w-1.5 rounded-full bg-mateus-gold flex-shrink-0"
+                />
+                <span>Doutor pela {author.doctorate}</span>
+              </li>
+              <li className="text-sm text-mateus-text/85 flex items-start gap-3">
+                <span
+                  aria-hidden
+                  className="mt-1.5 h-1.5 w-1.5 rounded-full bg-mateus-gold flex-shrink-0"
+                />
+                <span className="font-semibold">{author.crm}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="rounded-2xl bg-mateus-white border border-mateus-accent/15 p-6 shadow-card-soft">
+            <p className="eyebrow text-mateus-gold mb-3">Liderança executiva</p>
+            <ul className="space-y-3">
+              {CARGOS.map((c) => (
+                <li key={c.org} className="text-sm">
+                  <p className="font-semibold text-mateus-primary">
+                    {c.role} · <span className="font-normal">{c.org}</span>
+                  </p>
+                  <p className="text-mateus-muted text-xs mt-0.5 leading-relaxed">
+                    {c.desc}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="lg:col-span-7 space-y-6">
+          <div>
+            <p className="eyebrow text-mateus-gold mb-3">Bio</p>
+            <p className="text-base lg:text-lg text-mateus-text/90 leading-relaxed">
+              {author.bio}
+            </p>
+            <p className="mt-3 text-base text-mateus-text/80 italic leading-relaxed">
+              &ldquo;{author.bridge}&rdquo;
+            </p>
+            <p className="mt-3 text-xs uppercase tracking-eyebrow text-mateus-gold/80">
+              + de {author.professionalsTrained.toLocaleString('pt-BR')}{' '}
+              profissionais formados
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-mateus-bg-alt border border-mateus-accent/15 p-6">
+            <p className="eyebrow text-mateus-gold mb-4">
+              Autor · Editora Atheneu
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link
+                href={`/livros/${book.slug}`}
+                className="group block rounded-lg border border-mateus-accent/20 bg-mateus-white p-4 hover:border-mateus-gold/50 transition-colors"
+              >
+                <p className="text-[10px] uppercase tracking-eyebrow text-mateus-muted">
+                  Livro 1
+                </p>
+                <p className="font-serif font-bold text-mateus-primary text-sm leading-tight mt-1">
+                  Avaliação Metabólica Avançada
+                </p>
+                <p className="text-xs text-mateus-muted mt-1">
+                  Calorimetria + TCPE · {book.totalChapters} capítulos
+                </p>
+                <p className="text-xs font-semibold text-mateus-gold mt-2 group-hover:underline">
+                  Ver landing page →
+                </p>
+              </Link>
+              <Link
+                href={`/livros/${bookMev.slug}`}
+                className="group block rounded-lg border border-mateus-accent/20 bg-mateus-white p-4 hover:border-mateus-gold/50 transition-colors"
+              >
+                <p className="text-[10px] uppercase tracking-eyebrow text-mateus-muted">
+                  Livro 2
+                </p>
+                <p className="font-serif font-bold text-mateus-primary text-sm leading-tight mt-1">
+                  Nova Medicina do Estilo de Vida
+                </p>
+                <p className="text-xs text-mateus-muted mt-1">
+                  Prevenção · Tratamento · Longevidade
+                </p>
+                <p className="text-xs font-semibold text-mateus-gold mt-2 group-hover:underline">
+                  Ver landing page →
+                </p>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+// =====================================================================
+// 6. Vídeos / fotos de palco — placeholder grid 2x2
+// =====================================================================
+// TODO Doutor: enviar 4 fotos/vídeos de eventos passados (palestras,
+// painéis, gravações). Quando preencher, adicionar JSON-LD VideoObject
+// para cada vídeo (schema.org/VideoObject — feature flag pendente).
+
+const GALERIA_PLACEHOLDERS = [
+  {
+    label: 'Keynote · Congresso médico',
+    hint: 'Foto de palco em close (autor com microfone, plateia ao fundo)',
+  },
+  {
+    label: 'Workshop · Sessão prática',
+    hint: 'Foto de bastidor (autor demonstrando equipamento ou laudo)',
+  },
+  {
+    label: 'Mídia · Entrevista',
+    hint: 'Frame de podcast ou entrevista em estúdio',
+  },
+  {
+    label: 'Mentoria · Sala de board',
+    hint: 'Foto institucional com C-level (composição minimalista)',
+  },
+] as const;
+
+function GaleriaSection() {
+  return (
+    <Section id="galeria" alt>
+      <SectionHeader
+        eyebrow="No palco"
+        heading="Eventos passados, mídia e bastidores."
+        subheading="Em curadoria. Em breve, registros recentes de keynotes, workshops e aparições em mídia."
+        align="center"
+      />
+      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {GALERIA_PLACEHOLDERS.map((g, i) => (
+          <div
+            key={g.label}
+            className="group relative aspect-video rounded-2xl overflow-hidden border border-dashed border-mateus-accent/40 bg-mateus-white flex items-center justify-center text-center p-6 transition-colors hover:border-mateus-gold/50"
+            data-stagger-index={i}
+          >
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-30"
+              style={{
+                background:
+                  'radial-gradient(circle at 50% 100%, rgba(176, 133, 56, 0.15), transparent 70%)',
+              }}
+            />
+            <div className="relative space-y-2">
+              <p className="text-xs uppercase tracking-eyebrow text-mateus-gold font-semibold">
+                {g.label}
+              </p>
+              <p className="text-xs text-mateus-muted/80 italic max-w-[260px] mx-auto">
+                {g.hint}
+              </p>
+              <p className="text-[10px] uppercase tracking-eyebrow text-mateus-accent/60 pt-2">
+                TODO Doutor: enviar mídia
+              </p>
+            </div>
+          </div>
         ))}
       </div>
     </Section>
