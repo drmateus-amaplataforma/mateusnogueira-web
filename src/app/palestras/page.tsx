@@ -149,7 +149,14 @@ function HeroSection() {
 // TODO Doutor: revisar 3 segmentos. Pode haver 4º (ex.: instituições de
 // ensino, sociedades médicas) — adicionar card adicional se necessário.
 
-const PROPOSTA = [
+type PropostaCard = {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  href?: string;
+};
+
+const PROPOSTA: readonly PropostaCard[] = [
   {
     eyebrow: 'Para empresas',
     heading: 'Saúde corporativa e performance executiva',
@@ -166,7 +173,7 @@ const PROPOSTA = [
     body: 'Aparições em programas de saúde, podcasts e mesas-redondas para público leigo qualificado. Tradução de evidência científica em recomendações concretas — sem hype, sem promessa milagrosa, sem termo técnico solto.',
     href: '/midia',
   },
-] as const;
+];
 
 function PropostaSection() {
   return (
