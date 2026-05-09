@@ -190,81 +190,80 @@ function AparicoesSection() {
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
         {APARICOES.map((a, i) => {
           const isPlaceholder = a.href === null;
-          const Wrapper = ({ children }: { children: React.ReactNode }) =>
-            isPlaceholder ? (
-              <div className="block h-full">{children}</div>
-            ) : (
-              <a
-                href={a.href!}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block h-full"
+          const articleEl = (
+            <article
+              className={`h-full rounded-2xl bg-mateus-white border border-mateus-accent/15 overflow-hidden transition-all duration-300 ${
+                isPlaceholder
+                  ? 'opacity-90'
+                  : 'group-hover:border-mateus-gold/40 group-hover:shadow-card-hover group-hover:-translate-y-1'
+              }`}
+            >
+              <div
+                className="relative aspect-[16/9] w-full overflow-hidden bg-mateus-bg-alt"
+                aria-hidden
               >
-                {children}
-              </a>
-            );
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      'linear-gradient(135deg, rgba(31, 42, 68, 0.06) 0%, rgba(176, 133, 56, 0.10) 100%)',
+                  }}
+                />
+                <div className="absolute inset-0 dot-grid-mateus opacity-30" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="font-serif text-4xl text-mateus-accent/30 italic select-none">
+                    {a.tipo}
+                  </span>
+                </div>
+                {/* TODO Doutor: substituir placeholder por thumb real
+                    (capa do podcast, frame do vídeo, screenshot do
+                    artigo, foto do palco) quando lista for enviada. */}
+              </div>
+
+              <div className="p-6 flex flex-col">
+                <div className="flex items-center gap-2 flex-wrap mb-3">
+                  <span
+                    className={`text-[10px] uppercase tracking-eyebrow font-semibold px-2.5 py-1 rounded-full ${TIPO_BADGE[a.tipo]}`}
+                  >
+                    {a.tipo}
+                  </span>
+                  <span className="text-xs text-mateus-muted/80">
+                    {a.veiculo} · {a.data}
+                  </span>
+                </div>
+                <h3 className="font-serif font-bold text-base text-mateus-primary leading-tight mb-2">
+                  {a.titulo}
+                </h3>
+                <p className="text-sm text-mateus-text/80 leading-relaxed">
+                  {a.resumo}
+                </p>
+                {isPlaceholder ? (
+                  <p className="text-[10px] uppercase tracking-eyebrow text-mateus-accent/60 italic mt-4">
+                    TODO Doutor: enviar URL
+                  </p>
+                ) : (
+                  <p className="text-xs font-semibold text-mateus-gold mt-4 group-hover:underline inline-flex items-center gap-1">
+                    Acessar <span aria-hidden>↗</span>
+                  </p>
+                )}
+              </div>
+            </article>
+          );
 
           return (
             <Reveal key={i} delay={i * 0.06} className="h-full">
-              <Wrapper>
-                <article
-                  className={`h-full rounded-2xl bg-mateus-white border border-mateus-accent/15 overflow-hidden transition-all duration-300 ${
-                    isPlaceholder
-                      ? 'opacity-90'
-                      : 'group-hover:border-mateus-gold/40 group-hover:shadow-card-hover group-hover:-translate-y-1'
-                  }`}
+              {isPlaceholder ? (
+                <div className="block h-full">{articleEl}</div>
+              ) : (
+                <a
+                  href={a.href!}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block h-full"
                 >
-                  <div
-                    className="relative aspect-[16/9] w-full overflow-hidden bg-mateus-bg-alt"
-                    aria-hidden
-                  >
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          'linear-gradient(135deg, rgba(31, 42, 68, 0.06) 0%, rgba(176, 133, 56, 0.10) 100%)',
-                      }}
-                    />
-                    <div className="absolute inset-0 dot-grid-mateus opacity-30" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-serif text-4xl text-mateus-accent/30 italic select-none">
-                        {a.tipo}
-                      </span>
-                    </div>
-                    {/* TODO Doutor: substituir placeholder por thumb real
-                        (capa do podcast, frame do vídeo, screenshot do
-                        artigo, foto do palco) quando lista for enviada. */}
-                  </div>
-
-                  <div className="p-6 flex flex-col">
-                    <div className="flex items-center gap-2 flex-wrap mb-3">
-                      <span
-                        className={`text-[10px] uppercase tracking-eyebrow font-semibold px-2.5 py-1 rounded-full ${TIPO_BADGE[a.tipo]}`}
-                      >
-                        {a.tipo}
-                      </span>
-                      <span className="text-xs text-mateus-muted/80">
-                        {a.veiculo} · {a.data}
-                      </span>
-                    </div>
-                    <h3 className="font-serif font-bold text-base text-mateus-primary leading-tight mb-2">
-                      {a.titulo}
-                    </h3>
-                    <p className="text-sm text-mateus-text/80 leading-relaxed">
-                      {a.resumo}
-                    </p>
-                    {isPlaceholder ? (
-                      <p className="text-[10px] uppercase tracking-eyebrow text-mateus-accent/60 italic mt-4">
-                        TODO Doutor: enviar URL
-                      </p>
-                    ) : (
-                      <p className="text-xs font-semibold text-mateus-gold mt-4 group-hover:underline inline-flex items-center gap-1">
-                        Acessar <span aria-hidden>↗</span>
-                      </p>
-                    )}
-                  </div>
-                </article>
-              </Wrapper>
+                  {articleEl}
+                </a>
+              )}
             </Reveal>
           );
         })}
