@@ -4,16 +4,77 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { book } from '@/lib/design-tokens';
+import { book, bookMev } from '@/lib/design-tokens';
 
-const MENU = [
+export type HeaderMode = 'institutional' | 'lp1' | 'lp2';
+
+interface HeaderProps {
+  mode?: HeaderMode;
+}
+
+interface MenuItem {
+  href: string;
+  label: string;
+}
+
+interface CtaConfig {
+  href: string;
+  labelDesktop: string;
+  labelMobile: string;
+  external: boolean;
+  data: string;
+}
+
+const MENU_INSTITUTIONAL: MenuItem[] = [
+  { href: '/palestras', label: 'Palestras' },
+  { href: '/sobre', label: 'Sobre' },
+  { href: '/livros', label: 'Livros' },
+  { href: '/midia', label: 'Mídia' },
+  { href: '/contato', label: 'Contato' },
+];
+
+const MENU_LP_BOOK: MenuItem[] = [
   { href: '#metodo', label: 'O método' },
   { href: '#conteudo', label: 'Sumário' },
   { href: '#autor', label: 'Autor' },
   { href: '#faq', label: 'Perguntas frequentes' },
 ];
 
-export function Header() {
+function ctaFor(mode: HeaderMode): CtaConfig {
+  switch (mode) {
+    case 'lp1':
+      return {
+        href: book.ctaUrl('header'),
+        labelDesktop: 'Comprar na Atheneu',
+        labelMobile: 'Comprar',
+        external: true,
+        data: 'header-lp1',
+      };
+    case 'lp2':
+      return {
+        href: bookMev.ctaUrl('header'),
+        labelDesktop: 'Comprar na Atheneu',
+        labelMobile: 'Comprar',
+        external: true,
+        data: 'header-lp2',
+      };
+    case 'institutional':
+    default:
+      return {
+        href: '/palestras#contato',
+        labelDesktop: 'Solicitar palestra',
+        labelMobile: 'Palestra',
+        external: false,
+        data: 'header-institutional',
+      };
+  }
+}
+
+function menuFor(mode: HeaderMode): MenuItem[] {
+  return mode === 'institutional' ? MENU_INSTITUTIONAL : MENU_LP_BOOK;
+}
+
+export function Header({ mode = 'institutional' }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -22,6 +83,9 @@ export function Header() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const menu = menuFor(mode);
+  const cta = ctaFor(mode);
 
   return (
     <header
@@ -34,7 +98,7 @@ export function Header() {
     >
       <div className="container-content flex items-center justify-between py-3">
         <Link
-          href="/livros/avaliacao-metabolica"
+          href="/"
           className="flex items-center gap-3"
           aria-label="Dr. Mateus Antunes Nogueira — início"
         >
@@ -57,28 +121,61 @@ export function Header() {
         </Link>
 
         <nav className="flex items-center gap-1 sm:gap-2">
-          {MENU.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="hidden md:inline-flex text-sm text-mateus-muted hover:text-mateus-primary transition-colors px-3 py-2"
-            >
-              {item.label}
-            </Link>
-          ))}
-          <a
-            href={book.ctaUrl('header')}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cta="header"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-mateus-bg bg-mateus-primary hover:bg-mateus-primary-deep px-4 py-2 rounded-lg shadow-cta-primary transition-all duration-200"
-          >
-            <span className="hidden sm:inline">Comprar na Atheneu</span>
-            <span className="sm:hidden">Comprar</span>
-            <span aria-hidden>→</span>
-          </a>
+          {menu.map((item) =>
+            item.href.startsWith('#') ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className="hidden md:inline-flex text-sm text-mateus-muted hover:text-mateus-primary transition-colors px-3 py-2"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="hidden md:inline-flex text-sm text-mateus-muted hover:text-mateus-primary transition-colors px-3 py-2"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
+          <CtaLink {...cta} />
         </nav>
       </div>
     </header>
+  );
+}
+
+function CtaLink({ href, labelDesktop, labelMobile, external, data }: CtaConfig) {
+  const className = cn(
+    'inline-flex items-center gap-1.5 text-sm font-semibold text-mateus-bg',
+    'bg-mateus-primary hover:bg-mateus-primary-deep px-4 py-2 rounded-lg',
+    'shadow-cta-primary transition-all duration-200'
+  );
+  const inner = (
+    <>
+      <span className="hidden sm:inline">{labelDesktop}</span>
+      <span className="sm:hidden">{labelMobile}</span>
+      <span aria-hidden>→</span>
+    </>
+  );
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cta={data}
+        className={className}
+      >
+        {inner}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} data-cta={data} className={className}>
+      {inner}
+    </Link>
   );
 }

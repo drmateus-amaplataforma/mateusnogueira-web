@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function AvaliacaoMetabolicaPage() {
   return (
     <>
-      <Header />
+      <Header mode="lp1" />
       <main>
         <S1_Hero />
         <S2_AtheneuLegacy />

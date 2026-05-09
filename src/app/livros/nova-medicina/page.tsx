@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 export default function NovaMedicinaPage() {
   return (
     <>
-      <Header />
+      <Header mode="lp2" />
       <main>
         <MevS1_Hero />
         <MevS2_AtheneuLegacy />
