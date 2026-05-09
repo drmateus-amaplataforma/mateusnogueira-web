@@ -58,7 +58,7 @@ export function MevS6_Autor() {
 
           <div className="bg-mateus-bg-alt border-l-4 border-mateus-lilas rounded-r-xl p-6 my-6">
             <p className="font-serif italic text-mateus-primary text-lg sm:text-xl leading-relaxed">
-              "{autorMev.pullQuote}"
+              &ldquo;{autorMev.pullQuote}&rdquo;
             </p>
           </div>
 

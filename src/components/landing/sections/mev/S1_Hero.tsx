@@ -42,7 +42,7 @@ export function MevS1_Hero() {
             </p>
 
             <p className="font-serif italic text-mateus-primary/80 text-base sm:text-lg leading-relaxed max-w-2xl border-l-2 border-mateus-lilas/40 pl-5">
-              "Permita-me ser seu guia nesta jornada."
+              &ldquo;Permita-me ser seu guia nesta jornada.&rdquo;
             </p>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-6 pt-2">
