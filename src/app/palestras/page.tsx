@@ -6,6 +6,7 @@ import { Footer } from '@/components/landing/ui/Footer';
 import { CTAButton } from '@/components/landing/ui/CTAButton';
 import { Section, SectionHeader } from '@/components/landing/ui/Section';
 import { GlowCard } from '@/components/landing/ui/GlowCard';
+import { LeadForm } from '@/components/landing/ui/LeadForm';
 import { author, book, bookMev } from '@/lib/design-tokens';
 
 export const metadata: Metadata = {
@@ -41,6 +42,9 @@ export default function PalestrasPage() {
         <TopicosSection />
         <CredenciaisSection />
         <GaleriaSection />
+        <BookingSection />
+        <FaqSection />
+        <CtaFinalSection />
       </main>
       <Footer />
     </>
@@ -540,5 +544,184 @@ function GaleriaSection() {
         ))}
       </div>
     </Section>
+  );
+}
+
+// =====================================================================
+// 7. Booking — formulário de solicitação (#booking)
+// =====================================================================
+// Reusa LeadForm com origem='palestra' (config canônica em LeadForm.tsx:
+// successHeading 'Solicitação registrada.', submit 'Solicitar palestra').
+
+function BookingSection() {
+  return (
+    <Section id="booking">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="lg:col-span-5 space-y-6">
+          <p className="eyebrow">Próximo passo</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-mateus-primary leading-tight">
+            Vamos conversar sobre seu evento.
+          </h2>
+          <p className="text-lg text-mateus-muted leading-relaxed">
+            Conte sobre formato, plateia e expectativa. Retorno em{' '}
+            <strong className="text-mateus-primary">48h úteis</strong> com
+            agenda, formatos sugeridos e valores.
+          </p>
+
+          <ul className="space-y-3 text-sm text-mateus-text/85 pt-4">
+            {[
+              'Disponível para Brasil e exterior',
+              'Equipe de produção pode ajudar com slides, abstract e vídeos',
+              'Materiais pós-evento (gravação, citações, posts) sob acordo',
+              'Política de antecedência mínima recomendada: 60 dias',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span
+                  aria-hidden
+                  className="mt-1.5 h-1.5 w-1.5 rounded-full bg-mateus-gold flex-shrink-0"
+                />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="rounded-lg bg-mateus-bg-alt border border-mateus-accent/15 p-4 mt-2">
+            <p className="text-xs uppercase tracking-eyebrow text-mateus-gold mb-1">
+              Imprensa e mídia
+            </p>
+            <p className="text-sm text-mateus-text/85 leading-relaxed">
+              Pautas urgentes (TV/jornal/podcast com prazo &lt; 7 dias) — use
+              também este formulário e marque{' '}
+              <em className="text-mateus-primary">&ldquo;mídia&rdquo;</em> em{' '}
+              <em>especialidade</em>. Triagem prioritária.
+            </p>
+          </div>
+        </div>
+
+        <div className="lg:col-span-7 lg:sticky lg:top-24">
+          <div className="rounded-2xl bg-mateus-white border border-mateus-accent/15 shadow-card-soft p-6 sm:p-8">
+            <LeadForm origem="palestra" />
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+// =====================================================================
+// 8. FAQ — accordion nativo <details>
+// =====================================================================
+// TODO Doutor: revisar respostas. Adicionar mais perguntas se quiser
+// (ex.: dress code, exclusividade regional, contrato padrão).
+
+const FAQ_ITENS = [
+  {
+    q: 'Qual é a antecedência mínima para agendar?',
+    a: 'Recomendado 60 dias para keynotes em congressos e 90 dias para workshops e mentorias. Pautas de mídia com prazo curto (TV, podcast) são tratadas em regime prioritário e podem ser confirmadas em 48-72h dependendo da agenda clínica.',
+  },
+  {
+    q: 'Atende eventos no exterior?',
+    a: 'Sim. Já atuou em eventos no Brasil inteiro e disponível para América Latina, Europa e EUA. Custos de passagem internacional, hospedagem e diárias são tratados separadamente do fee de palestra.',
+  },
+  {
+    q: 'Como funciona o investimento?',
+    a: 'Valores são fechados caso a caso conforme formato (keynote, workshop, mentoria), duração, tamanho de plateia, deslocamento e exclusividade regional. Solicite via formulário acima — retorno em 48h úteis com proposta detalhada. TODO Doutor: definir tabela pública ou manter sob consulta.',
+  },
+  {
+    q: 'Posso gravar a palestra?',
+    a: 'Sim, na maioria dos formatos. Uso interno (treinamento corporativo, biblioteca de congresso) costuma ser autorizado sem custo adicional. Distribuição pública (YouTube, mídia paga, cursos pagos) é negociada à parte com cláusula de uso de imagem.',
+  },
+  {
+    q: 'Recebo materiais de apoio antes do evento?',
+    a: 'Sim. Slides em alta resolução, abstract científico para o programa, bio resumida e bio expandida, fotos profissionais de divulgação e roteiro técnico são entregues em até 30 dias antes do evento. Em alguns formatos, pré-leitura para a plateia também é disponibilizada.',
+  },
+  {
+    q: 'Há cláusula de exclusividade?',
+    a: 'Para eventos corporativos, é possível negociar exclusividade temporária (não-concorrência regional ou setorial) em contrato à parte, mediante fee adicional. Para congressos médicos, em geral não se aplica.',
+  },
+] as const;
+
+function FaqSection() {
+  return (
+    <Section id="faq" alt>
+      <SectionHeader
+        eyebrow="Perguntas frequentes"
+        heading="Tudo que você precisa saber antes de fechar."
+        align="center"
+      />
+      <div className="mt-12 max-w-3xl mx-auto space-y-3">
+        {FAQ_ITENS.map((item, i) => (
+          <details
+            key={item.q}
+            className="group rounded-xl bg-mateus-white border border-mateus-accent/15 overflow-hidden transition-colors hover:border-mateus-accent/35 open:border-mateus-gold/40 open:shadow-card-soft"
+          >
+            <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 select-none">
+              <span className="flex items-baseline gap-3 flex-1">
+                <span className="font-serif font-bold text-mateus-gold text-sm leading-none">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="font-semibold text-mateus-primary text-base sm:text-lg leading-snug">
+                  {item.q}
+                </span>
+              </span>
+              <span
+                aria-hidden
+                className="flex-shrink-0 text-mateus-gold text-xl font-light transition-transform duration-300 group-open:rotate-45"
+              >
+                +
+              </span>
+            </summary>
+            <div className="px-6 pb-5 pt-0 -mt-1">
+              <p className="text-sm text-mateus-text/85 leading-relaxed pl-7">
+                {item.a}
+              </p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+// =====================================================================
+// 9. CTA final
+// =====================================================================
+
+function CtaFinalSection() {
+  return (
+    <section className="relative overflow-hidden bg-mateus-primary py-20 lg:py-28">
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-50"
+        style={{
+          background:
+            'radial-gradient(circle at 80% 30%, rgba(176, 133, 56, 0.18), transparent 60%), radial-gradient(circle at 15% 85%, rgba(176, 133, 56, 0.10), transparent 65%)',
+        }}
+      />
+      <div className="container-content relative">
+        <div className="max-w-3xl mx-auto text-center space-y-6">
+          <p className="eyebrow text-mateus-gold">Próximo evento</p>
+          <h2 className="font-serif font-bold text-3xl sm:text-4xl lg:text-5xl text-mateus-white leading-tight">
+            Pronto para trazer Dr. Mateus ao seu evento?
+          </h2>
+          <p className="text-lg text-mateus-white/80 leading-relaxed max-w-2xl mx-auto">
+            Solicite proposta detalhada em 48h úteis. Conteúdo científico
+            denso, traduzido em recomendações concretas — como na clínica,
+            como no livro.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+            <CTAButton href="#booking" variant="gold" size="lg">
+              Solicitar palestra →
+            </CTAButton>
+            <Link
+              href="#topicos"
+              className="inline-flex items-center justify-center gap-2 rounded-lg text-base font-semibold py-4 px-8 bg-transparent text-mateus-white border border-mateus-white/30 hover:border-mateus-white/70 hover:bg-mateus-white/[0.04] transition-all duration-200"
+            >
+              Ver temas
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
