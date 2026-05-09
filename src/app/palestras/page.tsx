@@ -302,7 +302,13 @@ function FormatosSection() {
 // TODO Doutor: revisar lista. Mover ordem por preferência de relevância
 // para cada perfil de evento. Adicionar/remover livremente.
 
-const TOPICOS = [
+type TopicoCard = {
+  title: string;
+  body: string;
+  todo?: boolean;
+};
+
+const TOPICOS: readonly TopicoCard[] = [
   {
     title: 'Avaliação metabólica avançada',
     body: 'Calorimetria Indireta + Teste Cardiopulmonar de Exercício (TCPE) + Sistema de Validação Dialógica de Limiares (SVDL) na prática clínica.',
@@ -328,7 +334,7 @@ const TOPICOS = [
     title: 'A relação médico-paciente na medicina 3.0',
     body: 'Por que o "tá tudo normal" do exame de rotina engana, e como reconfigurar a consulta para sair da medicina reativa.',
   },
-] as const;
+];
 
 function TopicosSection() {
   return (
