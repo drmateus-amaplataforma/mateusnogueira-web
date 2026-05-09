@@ -157,8 +157,7 @@ const FRENTES = [
     icon: '📚',
     label: 'Livros',
     desc: 'Dois títulos pela Editora Atheneu (2026) — técnico e divulgação.',
-    // TODO: rota /livros (índice) chega em 6.3c — por ora, linka direto LP1
-    href: '/livros/avaliacao-metabolica',
+    href: '/livros',
     available: true,
   },
   {
@@ -173,14 +172,14 @@ const FRENTES = [
     label: 'Mídia',
     desc: 'Entrevistas, podcasts e materiais para imprensa.',
     href: '/midia',
-    available: false,
+    available: true,
   },
   {
     icon: '✉️',
     label: 'Contato',
     desc: 'Equipe, parcerias institucionais e questões administrativas.',
     href: '/contato',
-    available: false,
+    available: true,
   },
 ] as const;
 
