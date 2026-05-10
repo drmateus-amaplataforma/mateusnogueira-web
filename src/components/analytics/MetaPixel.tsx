@@ -30,12 +30,19 @@ function bootPixel() {
   if (window.__mateusMetaPixelInitialized) return;
   if (window.fbq) return;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const fbq: any = function (...args: unknown[]) {
+  type FbqFn = {
+    (...args: unknown[]): void;
+    callMethod?: (...args: unknown[]) => void;
+    queue?: unknown[];
+    push?: FbqFn;
+    loaded?: boolean;
+    version?: string;
+  };
+  const fbq = function (...args: unknown[]) {
     fbq.callMethod
       ? fbq.callMethod.apply(fbq, args)
       : fbq.queue!.push(args);
-  };
+  } as FbqFn;
   fbq.push = fbq;
   fbq.loaded = true;
   fbq.version = '2.0';
