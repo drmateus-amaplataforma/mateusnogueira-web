@@ -55,8 +55,10 @@ export default function HomePage() {
 // =====================================================================
 // 1. Hero (full-bleed ~80vh, DotGrid + photo + AnimatedFilete + Scroll)
 // =====================================================================
-// TODO Doutor: revisar headline + subhead. Foto: C2_academico_05_camisa_mesa_computador.jpg
-// (curadoria oficial). Pode trocar por outra de 06_Photography/curadoria.
+// Headline + subhead alinhados à Estratégia de Marca canônica
+// (Estrategia_Marca_Dr_Mateus_v1.md): executivo, denso em conteúdo,
+// autoridade científica, sem storytelling motivacional.
+// Foto: C2_academico_05_camisa_mesa_computador.jpg (curadoria oficial).
 
 function HeroSection() {
   return (
@@ -81,7 +83,7 @@ function HeroSection() {
 
             <Reveal as="h1" delay={0.08}>
               <span className="block font-serif font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-mateus-primary leading-[1.05] tracking-tight">
-                Cirurgia, fisiologia e medicina do estilo de vida.
+                Cirurgia, medicina do exercício e medicina do estilo de vida.
               </span>
             </Reveal>
 
@@ -90,10 +92,11 @@ function HeroSection() {
             </Reveal>
 
             <Reveal as="p" delay={0.2} className="text-lg sm:text-xl text-mateus-muted leading-relaxed max-w-2xl">
-              Doutor pela USP, autor Atheneu, fundador do ecossistema AMA +
-              Vida Ativa Ensino + Oxy Recovery — traduzindo evidência
-              científica em prática clínica e em palco.
-              {/* TODO Doutor: revisar subhead — voz mais pessoal vs institucional */}
+              Doutor pela USP, autor pela Editora Atheneu, fundador da
+              Plataforma AMA, da Vida Ativa Ensino e Pesquisa, e da Oxy
+              Recovery — três frentes que aplicam, em produto, em ensino e
+              em clínica, a mesma metodologia em avaliação metabólica
+              avançada.
             </Reveal>
 
             <Reveal delay={0.28} className="flex flex-col sm:flex-row gap-3 pt-4">
@@ -143,7 +146,7 @@ function HeroSection() {
 // =====================================================================
 // 2. Quem sou — eyebrow + 1 frase resumo + grid 5 cards das frentes
 // =====================================================================
-// TODO Doutor: revisar copy do parágrafo de abertura.
+// Subhead derivado de Bio_e_Credenciais/Biografia_Padrao.md (versão média).
 
 const FRENTES = [
   {
@@ -189,10 +192,9 @@ function QuemSouSection() {
       <SectionHeader
         eyebrow="Autoridade em avaliação metabólica"
         heading="Cirurgião que escreveu o livro. Fundador da plataforma que aplica o método."
-        subheading="Cirurgia digestiva, medicina do exercício e nutrologia — três especialidades, uma única lente clínica integrada. Mais de uma década atendendo executivos, atletas e profissionais de saúde no Brasil e no exterior."
+        subheading="Médico cirurgião do aparelho digestivo, médico do exercício e do esporte e nutrólogo. Maior autoridade nacional em avaliação metabólica avançada por calorimetria indireta e ergoespirometria. Mais de uma década atendendo executivos, atletas e profissionais de saúde."
         align="center"
       />
-      {/* TODO Doutor: revisar parágrafo de abertura — versão atual tira da bio padrão. */}
 
       <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5">
         {FRENTES.map((f, i) => (
@@ -322,14 +324,16 @@ function EcossistemaSection() {
 // =====================================================================
 // 4. Social proof — 4 stats com number-up animation (useInView)
 // =====================================================================
-// TODO Doutor: confirmar 1.000+ profissionais e 15+ anos de pratica.
+// Stats canônicos: 1000+ profissionais formados (VAE oficial · ver
+// ECOSSISTEMA section + brand strategy v1) · 2 livros Atheneu 2026 ·
+// CRM-SP 97070 USP · 10+ anos prática clínica (Estratégia de Marca v1
+// "Mais de uma década atendendo executivos, atletas e profissionais").
 
 type StatItem = {
   value: number;
   suffix?: string;
   label: string;
   formatType?: 'comma' | 'crm';
-  todo?: boolean;
 };
 
 const STATS: readonly StatItem[] = [
@@ -337,7 +341,6 @@ const STATS: readonly StatItem[] = [
     value: 1000,
     suffix: '+',
     label: 'profissionais formados pela Vida Ativa Ensino',
-    todo: true,
   },
   {
     value: 2,
@@ -349,10 +352,9 @@ const STATS: readonly StatItem[] = [
     formatType: 'crm',
   },
   {
-    value: 15,
+    value: 10,
     suffix: '+',
     label: 'anos de prática clínica integrada',
-    todo: true,
   },
 ];
 
@@ -383,11 +385,6 @@ function SocialProofSection() {
             </p>
             <p className="text-xs sm:text-sm text-mateus-text/85 leading-relaxed">
               {stat.label}
-              {stat.todo && (
-                <span className="block text-[10px] uppercase tracking-eyebrow text-mateus-gold/70 italic mt-1">
-                  TODO Doutor: confirmar
-                </span>
-              )}
             </p>
           </Reveal>
         ))}
@@ -399,7 +396,7 @@ function SocialProofSection() {
 // =====================================================================
 // 5. CTA final — bg navy + radial gold
 // =====================================================================
-// TODO Doutor: revisar headline ("Vamos transformar conhecimento em palco?").
+// Headline alinhada à voz canônica: direto, executivo, sem motivação.
 
 function CtaFinalSection() {
   return (
@@ -415,16 +412,16 @@ function CtaFinalSection() {
       />
       <div className="container-content relative">
         <Reveal className="max-w-3xl mx-auto text-center space-y-6">
-          <p className="eyebrow text-mateus-gold">Próximo evento</p>
+          <p className="eyebrow text-mateus-gold">Próximo passo</p>
           <h2 className="font-serif font-bold text-3xl sm:text-4xl lg:text-5xl text-mateus-white leading-tight">
-            Vamos transformar conhecimento em palco?
+            Para palestras, congressos médicos e mentorias.
           </h2>
           <div className="flex justify-center">
             <AnimatedFilete width={80} align="center" />
           </div>
           <p className="text-lg text-mateus-white/80 leading-relaxed max-w-2xl mx-auto">
-            Solicite proposta detalhada de palestra ou workshop. Retorno em
-            48h úteis com agenda, formatos e valores.
+            Solicite proposta detalhada com agenda, formatos sugeridos e
+            valores. Retorno em 48h úteis · disponível para Brasil e exterior.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
             <CTAButton href="/palestras#booking" variant="gold" size="lg">

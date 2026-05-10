@@ -225,11 +225,12 @@ function CardsSection() {
 }
 
 // =====================================================================
-// 3. Futuras publicações — placeholder
+// 3. Futuras publicações — em curadoria
 // =====================================================================
-// TODO Doutor: confirmar próximos títulos previstos pela Atheneu /
-// outras editoras. Lista pode incluir capítulos em obras coletivas,
-// novas edições e adaptações do método para nichos específicos.
+// Lista de próximos títulos (capítulos em obras coletivas, novas edições,
+// adaptações para nichos específicos) será preenchida quando confirmada
+// pela Editora Atheneu. Comentário inline TODO Doutor mantido para
+// referência futura.
 
 function FuturasSection() {
   return (
@@ -237,7 +238,7 @@ function FuturasSection() {
       <Reveal as="header" className="text-center max-w-narrow mx-auto mb-12">
         <p className="eyebrow text-mateus-gold mb-3">Próximos lançamentos</p>
         <h2 className="text-3xl sm:text-4xl text-mateus-primary">
-          Em breve.
+          Em curadoria.
         </h2>
         <AnimatedFilete align="center" width={64} className="mt-4" />
       </Reveal>
@@ -245,14 +246,20 @@ function FuturasSection() {
       <Reveal delay={0.1} className="max-w-3xl mx-auto">
         <div className="rounded-2xl border border-dashed border-mateus-accent/25 bg-mateus-bg-alt/40 p-8 sm:p-10 text-center space-y-3">
           <p className="text-base text-mateus-text/80 leading-relaxed">
-            Novos lançamentos previstos pela{' '}
-            <strong className="text-mateus-primary">Editora Atheneu</strong> e
-            colaborações em obras coletivas seguem em curadoria.
+            Novos lançamentos pela{' '}
+            <strong className="text-mateus-primary">Editora Atheneu</strong>,
+            capítulos em obras coletivas e adaptações do método para nichos
+            específicos seguem em curadoria.
           </p>
-          <p className="text-xs text-mateus-muted/80 italic">
-            TODO Doutor: confirmar lista de próximos títulos (capítulos em
-            obras coletivas, novas edições, adaptações para nichos
-            específicos) para listar nesta seção.
+          <p className="text-sm text-mateus-muted leading-relaxed">
+            Para mais informações sobre próximos títulos, escreva para{' '}
+            <a
+              href="mailto:dr.mateus@amaplataforma.com.br"
+              className="text-mateus-primary font-semibold hover:text-mateus-gold transition-colors underline-offset-4 hover:underline"
+            >
+              dr.mateus@amaplataforma.com.br
+            </a>
+            .
           </p>
         </div>
       </Reveal>

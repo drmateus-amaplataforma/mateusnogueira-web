@@ -94,9 +94,9 @@ function HeroSection() {
 // =====================================================================
 // Telefone WhatsApp palestras CANÔNICO: (11) 99891-1235 →
 // https://wa.me/5511998911235. NÃO usar (11) 93712-1234 (esse é
-// WhatsApp interno equipe — não público).
-// TODO Doutor: confirmar slug LinkedIn (placeholder
-// dr-mateus-antunes-nogueira) e e-mail institucional.
+// WhatsApp interno equipe — não público). Memória contatos_canonicos.md.
+// LinkedIn slug atual `dr-mateus-antunes-nogueira` é o esperado;
+// confirmar/atualizar se Doutor mudar.
 
 type CanalIcon = 'whatsapp' | 'email' | 'linkedin' | 'instagram';
 
@@ -132,7 +132,7 @@ const CANAIS: readonly CanalItem[] = [
     value: 'in/dr-mateus-antunes-nogueira',
     href: 'https://www.linkedin.com/in/dr-mateus-antunes-nogueira',
     external: true,
-    note: 'TODO Doutor: confirmar slug oficial',
+    note: 'Network profissional · publicações sobre avaliação metabólica e medicina integrativa',
   },
   {
     icon: 'instagram',

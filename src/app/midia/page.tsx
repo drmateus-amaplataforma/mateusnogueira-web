@@ -109,62 +109,11 @@ type Aparicao = {
   href: string | null;
 };
 
-const APARICOES: readonly Aparicao[] = [
-  {
-    tipo: 'Artigo',
-    veiculo: 'Veículo · TODO Doutor',
-    data: '2026',
-    titulo: 'Título da matéria — TODO Doutor',
-    resumo:
-      'Síntese curta da reportagem (1-2 frases). Indicar revista médica, jornal, blog ou portal de saúde com URL pública.',
-    href: null,
-  },
-  {
-    tipo: 'Entrevista',
-    veiculo: 'Veículo · TODO Doutor',
-    data: '2026',
-    titulo: 'Entrevista sobre avaliação metabólica — TODO Doutor',
-    resumo:
-      'Tema da conversa em 1 frase. Indicar veículo (TV, podcast, vídeo), data e link.',
-    href: null,
-  },
-  {
-    tipo: 'Podcast',
-    veiculo: 'Podcast · TODO Doutor',
-    data: '2026',
-    titulo: 'Episódio sobre medicina do estilo de vida — TODO Doutor',
-    resumo:
-      'Cite o nome do programa, número do episódio e plataforma. URL Spotify / Apple Podcasts / YouTube.',
-    href: null,
-  },
-  {
-    tipo: 'Palestra',
-    veiculo: 'Congresso · TODO Doutor',
-    data: '2026',
-    titulo: 'Talk pública gravada — TODO Doutor',
-    resumo:
-      'Congressos, simpósios médicos ou eventos abertos com gravação disponível. Indicar nome do evento, ano e link.',
-    href: null,
-  },
-  {
-    tipo: 'Artigo',
-    veiculo: 'Veículo · TODO Doutor',
-    data: '2026',
-    titulo: 'Coluna de opinião — TODO Doutor',
-    resumo:
-      'Artigos assinados em portais de saúde, revistas de medicina ou imprensa generalista.',
-    href: null,
-  },
-  {
-    tipo: 'Entrevista',
-    veiculo: 'Veículo · TODO Doutor',
-    data: '2026',
-    titulo: 'Aparição em TV ou rádio — TODO Doutor',
-    resumo:
-      'Programas de TV aberta, rádio ou redes a cabo. Indicar canal, data, programa e link de retransmissão.',
-    href: null,
-  },
-];
+// APARICOES: lista é preenchida quando aparições reais (artigos,
+// entrevistas, podcasts, palestras com URLs públicas) forem confirmadas.
+// Tipos disponíveis: Artigo, Entrevista, Podcast, Palestra.
+// Enquanto vazia, AparicoesSection renderiza estado "Em curadoria" elegante.
+const APARICOES: readonly Aparicao[] = [];
 
 const TIPO_BADGE: Record<AparicaoTipo, string> = {
   Artigo:
@@ -178,6 +127,41 @@ const TIPO_BADGE: Record<AparicaoTipo, string> = {
 };
 
 function AparicoesSection() {
+  if (APARICOES.length === 0) {
+    return (
+      <Section id="aparicoes" alt>
+        <SectionHeader
+          eyebrow="Aparições"
+          heading="Onde Dr. Mateus aparece."
+          subheading="Curadoria de artigos, entrevistas, podcasts e palestras públicas. Lista atualizada conforme novas publicações são confirmadas."
+          align="center"
+        />
+        <Reveal delay={0.1} className="mt-12 max-w-3xl mx-auto">
+          <div className="rounded-2xl border border-dashed border-mateus-accent/25 bg-mateus-bg-alt/40 p-8 sm:p-10 text-center space-y-4">
+            <p className="eyebrow text-mateus-gold">Em curadoria</p>
+            <p className="text-base text-mateus-text/85 leading-relaxed">
+              Aparições recentes em revistas médicas, podcasts, congressos e
+              imprensa generalista estão sendo organizadas e serão publicadas
+              em breve com links diretos.
+            </p>
+            <p className="text-sm text-mateus-muted leading-relaxed">
+              Para solicitar entrevista, pauta ou comentário sobre avaliação
+              metabólica avançada, medicina do exercício ou medicina do estilo
+              de vida, escreva para{' '}
+              <a
+                href="mailto:dr.mateus@amaplataforma.com.br"
+                className="text-mateus-primary font-semibold hover:text-mateus-gold transition-colors underline-offset-4 hover:underline"
+              >
+                dr.mateus@amaplataforma.com.br
+              </a>
+              .
+            </p>
+          </div>
+        </Reveal>
+      </Section>
+    );
+  }
+
   return (
     <Section id="aparicoes" alt>
       <SectionHeader
@@ -269,13 +253,6 @@ function AparicoesSection() {
         })}
       </div>
 
-      <Reveal delay={0.4} className="mt-10 text-center">
-        <p className="text-xs text-mateus-muted/80 italic max-w-2xl mx-auto">
-          TODO Doutor: enviar lista real de 6-12 aparições com URLs públicas,
-          veículo, data, título e thumb (opcional). Tipos disponíveis:
-          Artigo, Entrevista, Podcast, Palestra.
-        </p>
-      </Reveal>
     </Section>
   );
 }
